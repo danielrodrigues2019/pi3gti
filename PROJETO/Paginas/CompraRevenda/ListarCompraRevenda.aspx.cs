@@ -7,13 +7,12 @@ using System.Web.UI.WebControls;
 using PROJETO.Persistencia;
 using System.Data;
 
-public partial class Paginas_Listar : System.Web.UI.Page
+public partial class Paginas_CompraRevenda_ListarCompraRevenda : System.Web.UI.Page
 {
-
 
     private void Carrega()
     {
-        ClienteBD bd = new ClienteBD();
+        ComprarevendaBD bd = new ComprarevendaBD();
         DataSet ds = bd.SelectAll();
         GridView1.DataSource = ds.Tables[0].DefaultView;
         GridView1.DataBind();
@@ -22,5 +21,5 @@ public partial class Paginas_Listar : System.Web.UI.Page
     {
         Carrega();
     }
-
+   
 }

@@ -9,17 +9,17 @@ namespace PROJETO.Classes
     /// <summary>
     /// Summary description for Cliente
     /// </summary>
-    public class Cliente
+    public class Fornecedor
     {
         //propriedades
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
+        public string CNPJ { get; set; }
         public string Endereco { get; set; }
-        public string CPF { get; set; }
-        
+
         //construtor
-        public Cliente()
+        public Fornecedor()
         {
             //
             // TODO: Add constructor logic here

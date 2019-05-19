@@ -9,22 +9,21 @@ namespace PROJETO.Persistencia
     /// <summary>
     /// Summary description for FuncionarioBD
     /// </summary>
-    public class ClienteBD
+    public class FornecedorBD
     {
         //métodos
         //insert
-        public bool Insert(Cliente cliente)
+        public bool Insert(Fornecedor fornecedor)
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_cliente(cli_nome, cli_telefone, cli_endereco, cli_cpf) VALUES (?nome, ?telefone, ?endereco, ?cpf)";
+            string sql = "INSERT INTO tbl_fornecedor(forn_nome, forn_telefone, forn_cnpj, forn_endereco) VALUES (?nome, ?telefone, ?cnpj, ?endereco)";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
-            objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
-            objCommand.Parameters.Add(Mapped.Parameter("?endereco", cliente.Endereco));
-            objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.CPF));
-
+            objCommand.Parameters.Add(Mapped.Parameter("?nome", fornecedor.Nome));
+            objCommand.Parameters.Add(Mapped.Parameter("?telefone", fornecedor.Telefone));
+            objCommand.Parameters.Add(Mapped.Parameter("?cnpj", fornecedor.CNPJ));
+            objCommand.Parameters.Add(Mapped.Parameter("?endereco", fornecedor.Endereco));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();
@@ -39,7 +38,7 @@ namespace PROJETO.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataAdapter objDataAdapter;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM tbl_cliente", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM tbl_fornecedor", objConexao);
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
             objConexao.Close();
@@ -49,23 +48,24 @@ namespace PROJETO.Persistencia
         }
         //select
         //select
-        public Cliente Select(int id)
+        public Fornecedor Select(int id)
         {
-            Cliente obj = null;
+
+            Fornecedor obj = null;
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM tbl_cliente WHERE cli_codigo=?codigo", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM tbl_fornecedor WHERE forn_codigo = ?codigo", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
             objDataReader = objCommand.ExecuteReader();
             while (objDataReader.Read())
             {
-                obj = new Cliente();
-                obj.Nome = Convert.ToString(objDataReader["cli_nome"]);
-                obj.Telefone = Convert.ToString(objDataReader["cli_telefone"]);
-                obj.Endereco = Convert.ToString(objDataReader["cli_endereco"]);
-                obj.CPF = Convert.ToString(objDataReader["cli_cpf"]);
+                obj = new Fornecedor();
+                obj.Codigo = Convert.ToInt32(objDataReader["forn_codigo"]);
+                obj.Nome = Convert.ToString(objDataReader["forn_nome"]);
+                obj.CNPJ = Convert.ToString(objDataReader["forn_cnpj"]);
+                obj.Endereco = Convert.ToString(objDataReader["forn_endereco"]);
             }
             objDataReader.Close();
             objConexao.Close();
@@ -73,24 +73,27 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             objDataReader.Dispose();
             return obj;
+
+
         }
         //update
-        public bool Update(Cliente cliente)
+        public bool Update(Fornecedor fornecedor)
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE tbl_cliente SET cli_nome=?nome, cli_telefone=?telefone, cli_endereco=?endereco, cli_cpf=?cpf WHERE cli_nome=?nome";
+            string sql = "UPDATE tbl_cliente SET forn_nome=?nome, forn_telefone=?telefone, forn_cnpj=?cnpj, forn_endereco=?endereco WHERE forn_nome=?nome";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
-            objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
-            objCommand.Parameters.Add(Mapped.Parameter("?endereco", cliente.Endereco));
-            objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.CPF));
+            objCommand.Parameters.Add(Mapped.Parameter("?nome", fornecedor.Nome));
+            objCommand.Parameters.Add(Mapped.Parameter("?telefone", fornecedor.Telefone));
+            objCommand.Parameters.Add(Mapped.Parameter("?cnpj", fornecedor.CNPJ));
+            objCommand.Parameters.Add(Mapped.Parameter("?endereco", fornecedor.Endereco));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
             return true;
+
         }
 
         //delete
@@ -98,7 +101,7 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "DELETE FROM tbl_cliente WHERE cli_codigo=?codigo";
+            string sql = "DELETE FROM tbl_fornecedor WHERE cli_codigo=?codigo";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
@@ -110,7 +113,7 @@ namespace PROJETO.Persistencia
             return true;
         }
         //construtor
-        public ClienteBD()
+        public FornecedorBD()
         {
             //
             // TODO: Add constructor logic here
