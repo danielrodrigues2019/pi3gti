@@ -30,7 +30,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
             lblMensagem.Text = "CompraRevenda cadastrada com sucesso";
             txtPagamento.Text = "";
             txtData.Text = "";
-            txtPagamento.Focus();
+            txtData.Focus();
         }
         else
         {

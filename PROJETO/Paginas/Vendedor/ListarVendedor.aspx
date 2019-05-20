@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListarCompraRevenda.aspx.cs" Inherits="Paginas_CompraRevenda_ListarCompraRevenda" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListarVendedor.aspx.cs" Inherits="Paginas_Vendedor_ListarVendedor" %>
 
 <!DOCTYPE html>
 
@@ -7,24 +7,25 @@
     <title></title>
 </head>
 <body>
-    <form id="form2" runat="server">
-        <asp:GridView ID="GridView1" runat="server">
+    <form id="form1" runat="server">
+        <div>
+            <asp:GridView ID="GridView1" runat="server">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar"
-                            CommandArgument='<%# Bind("cev_codigo")%>'>Alterar</asp:LinkButton>
+                            CommandArgument='<%# Bind("ven_codigo")%>'>Alterar</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar"
-                            CommandArgument='<%# Bind("cev_codigo")%>'>Excluir</asp:LinkButton>
+                            CommandArgument='<%# Bind("ven_codigo")%>'>Excluir</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        </div>
     </form>
 </body>
 </html>
-
