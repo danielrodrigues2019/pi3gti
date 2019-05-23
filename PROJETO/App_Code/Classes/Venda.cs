@@ -5,23 +5,18 @@ using System.Web;
 
 namespace PROJETO.Classes
 {
-
     /// <summary>
-    /// Summary description for Cliente
+    /// Summary description for Funcionario
     /// </summary>
-    public class Vendedor
+    public class Venda
     {
         //propriedades
         public int Codigo { get; set; }
-        public string Nome { get; set; }
-        public string Usuario { get; set; }
-        public string Senha { get; set; }
-        public string CPF { get; set; }
-        public string Email { get; set; }
-        public int Tipo { get; set; }
-
+        public string Pagamento { get; set; }
+        public decimal Valor { get; set; }
+        public string Data { get; set; }
         //construtor
-        public Vendedor()
+        public Venda()
         {
             //
             // TODO: Add constructor logic here

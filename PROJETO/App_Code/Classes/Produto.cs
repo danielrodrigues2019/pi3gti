@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using System;
+using System.Web;
+
 namespace PROJETO.Classes
 {
-
     /// <summary>
-    /// Summary description for Cliente
+    /// Summary description for Funcionario
     /// </summary>
-    public class Vendedor
+    public class Produto
     {
         //propriedades
         public int Codigo { get; set; }
         public string Nome { get; set; }
-        public string Usuario { get; set; }
-        public string Senha { get; set; }
-        public string CPF { get; set; }
-        public string Email { get; set; }
-        public int Tipo { get; set; }
-
+        public string Categoria { get; set; }
+        public double PrecoVenda { get; set; }
         //construtor
-        public Vendedor()
+        public Produto()
         {
             //
             // TODO: Add constructor logic here
