@@ -64,6 +64,7 @@ namespace PROJETO.Persistencia
                 obj = new Fornecedor();
                 obj.Codigo = Convert.ToInt32(objDataReader["forn_codigo"]);
                 obj.Nome = Convert.ToString(objDataReader["forn_nome"]);
+                obj.Telefone = Convert.ToString(objDataReader["forn_telefone"]);
                 obj.CNPJ = Convert.ToString(objDataReader["forn_cnpj"]);
                 obj.Endereco = Convert.ToString(objDataReader["forn_endereco"]);
             }
@@ -81,9 +82,10 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE tbl_cliente SET forn_nome=?nome, forn_telefone=?telefone, forn_cnpj=?cnpj, forn_endereco=?endereco WHERE forn_nome=?nome";
+            string sql = "UPDATE tbl_fornecedor SET forn_nome=?nome, forn_telefone=?telefone, forn_cnpj=?cnpj, forn_endereco=?endereco WHERE forn_codigo=?codigo";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", fornecedor.Codigo));
             objCommand.Parameters.Add(Mapped.Parameter("?nome", fornecedor.Nome));
             objCommand.Parameters.Add(Mapped.Parameter("?telefone", fornecedor.Telefone));
             objCommand.Parameters.Add(Mapped.Parameter("?cnpj", fornecedor.CNPJ));
@@ -101,7 +103,7 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "DELETE FROM tbl_fornecedor WHERE cli_codigo=?codigo";
+            string sql = "DELETE FROM tbl_fornecedor WHERE forn_codigo=?codigo";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));

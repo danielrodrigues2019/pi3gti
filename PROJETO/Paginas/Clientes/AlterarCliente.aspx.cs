@@ -16,6 +16,7 @@ public partial class Paginas_Alterar : System.Web.UI.Page
             ClienteBD bd = new ClienteBD();
             Cliente cliente = bd.Select(Convert.ToInt32(Session["ID"]));
             txtNome.Text = cliente.Nome;
+            txtTelefone.Text = cliente.Telefone.ToString();
             txtCpf.Text = cliente.CPF.ToString();
             txtEndereco.Text = cliente.Endereco;
         }

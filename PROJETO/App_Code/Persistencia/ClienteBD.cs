@@ -47,8 +47,7 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-        //select
-        //select
+         //select
         public Cliente Select(int id)
         {
             Cliente obj = null;
@@ -62,6 +61,7 @@ namespace PROJETO.Persistencia
             while (objDataReader.Read())
             {
                 obj = new Cliente();
+                obj.Codigo = Convert.ToInt32 (objDataReader["cli_codigo"]);
                 obj.Nome = Convert.ToString(objDataReader["cli_nome"]);
                 obj.Telefone = Convert.ToString(objDataReader["cli_telefone"]);
                 obj.Endereco = Convert.ToString(objDataReader["cli_endereco"]);
@@ -79,9 +79,10 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE tbl_cliente SET cli_nome=?nome, cli_telefone=?telefone, cli_endereco=?endereco, cli_cpf=?cpf WHERE cli_nome=?nome";
+            string sql = "UPDATE tbl_cliente SET cli_nome=?nome, cli_telefone=?telefone, cli_endereco=?endereco, cli_cpf=?cpf WHERE cli_codigo=?codigo";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", cliente.Codigo));
             objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
             objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
             objCommand.Parameters.Add(Mapped.Parameter("?endereco", cliente.Endereco));
@@ -92,7 +93,6 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return true;
         }
-
         //delete
         public bool Delete(int id)
         {

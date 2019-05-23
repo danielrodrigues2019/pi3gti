@@ -13,9 +13,10 @@ namespace PROJETO.Classes
     {
         //propriedades
         public int Codigo { get; set; }
-        public int FornCodigo { get; set; }
+        public int FornecedorCodigo { get; set; }
         public string Pagamento { get; set; }
-        public string Data { get; set; }
+        public DateTime Data { get; set; }
+        
         
         //construtor
         public CompraRevenda()

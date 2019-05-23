@@ -7,8 +7,9 @@ using System.Web.UI.WebControls;
 using PROJETO.Persistencia;
 using System.Data;
 
+
 public partial class Paginas_Listar : System.Web.UI.Page
-{    
+{
     private void Carrega()
     {
         ClienteBD bd = new ClienteBD();

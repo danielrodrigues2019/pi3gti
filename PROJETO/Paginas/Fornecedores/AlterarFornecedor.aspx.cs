@@ -20,18 +20,17 @@ public partial class Paginas_Fornecedores_AlterarFornecedor : System.Web.UI.Page
             txtCNPJ.Text = fornecedor.CNPJ;
             txtEndereco.Text = fornecedor.Endereco;
         }
-
     }
-
     protected void salvar_Click(object sender, EventArgs e)
     {
+
         FornecedorBD bd = new FornecedorBD();
         Fornecedor fornecedor = bd.Select(Convert.ToInt32(Session["ID"]));
         fornecedor.Nome = txtNome.Text;
         fornecedor.Telefone = txtTelefone.Text;
         fornecedor.CNPJ = txtCNPJ.Text;
         fornecedor.Endereco = txtEndereco.Text;
-        
+
         if (bd.Update(fornecedor))
         {
             lblMensagem.Text = "Fornecedor alterado com sucesso";

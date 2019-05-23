@@ -17,12 +17,13 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_comprarevenda(com_pagamento, com_data) VALUES (?pagamento, ?data)";
+            string sql = "INSERT INTO tbl_comprarevenda(com_pagamento, com_data, forn_codigo) VALUES (?pagamento, ?data, ?fornecedor)";
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command(sql, objConexao);          
+            objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?pagamento", comprarevenda.Pagamento));
             objCommand.Parameters.Add(Mapped.Parameter("?data", comprarevenda.Data));
-            
+            objCommand.Parameters.Add(Mapped.Parameter("?fornecedor", comprarevenda.FornecedorCodigo));
+
 
 
             objCommand.ExecuteNonQuery();

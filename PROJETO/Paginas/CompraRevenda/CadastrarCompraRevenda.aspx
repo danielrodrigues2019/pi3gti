@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="Label1" runat="server" Text="Fornecedor"></asp:Label>
+&nbsp;<asp:DropDownList ID="ddlFornecedores" runat="server">
+        </asp:DropDownList>
+        <br />
         <br />
         <asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
 &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
