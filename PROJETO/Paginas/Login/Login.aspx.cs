@@ -30,8 +30,7 @@ public partial class Paginas_Login_Login : System.Web.UI.Page
             retorno = true;
         }
         return retorno;
-    }
-
+    }
 
     protected void btnEntrar_Click(object sender, EventArgs e)
     {
@@ -69,7 +68,6 @@ public partial class Paginas_Login_Login : System.Web.UI.Page
                 break;
             default:
                 break;
-        }
-
+        }
     }
 }
