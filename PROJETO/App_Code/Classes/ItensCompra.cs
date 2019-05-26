@@ -17,6 +17,7 @@ namespace PROJETO.Classes
         public int PrecoCusto { get; set; }
         //public int CompraRevendaCodigo { get; set; }
 
+
         //construtor
         public ItensCompra()
         {
