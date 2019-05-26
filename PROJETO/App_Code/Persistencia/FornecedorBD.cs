@@ -107,7 +107,6 @@ namespace PROJETO.Persistencia
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
-
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();

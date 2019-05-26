@@ -21,14 +21,14 @@ public partial class Paginas_CadastrarProduto : System.Web.UI.Page
 
         Produto produto = new Produto();
         produto.Nome = txtNome.Text;
-        produto.Cadastro = Convert.ToDateTime(txtCadastro.Text);
+        produto.Data = Convert.ToDateTime(txtData.Text);
         produto.PrecoVenda = Convert.ToDouble(txtPrecoVenda.Text);
         ProdutoBD bd = new ProdutoBD();
         if (bd.Insert(produto))
         {
             lblMensagem.Text = "Produto cadastrado com sucesso";
             txtNome.Text = "";
-            txtCadastro.Text = "";
+            txtData.Text = "";
             txtPrecoVenda.Text = "";
             txtNome.Focus();
         }

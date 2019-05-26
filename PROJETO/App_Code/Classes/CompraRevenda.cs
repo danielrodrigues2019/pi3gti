@@ -16,8 +16,7 @@ namespace PROJETO.Classes
         public int FornecedorCodigo { get; set; }
         public string Pagamento { get; set; }
         public DateTime Data { get; set; }
-        
-        
+                          
         //construtor
         public CompraRevenda()
         {
