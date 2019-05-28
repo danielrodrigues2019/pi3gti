@@ -19,7 +19,7 @@ namespace PROJETO.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataAdapter objDataAdapter;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM tbl_produto_preco WHERE pro_nome LIKE ? nome ORDER BY pro_nome", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM tbl_produto WHERE pro_nome LIKE ? nome ORDER BY pro_nome", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?nome", '%' + termo + '%'));
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
