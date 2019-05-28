@@ -5,21 +5,20 @@ using System.Web;
 
 namespace PROJETO.Classes
 {
-
     /// <summary>
-    /// Summary description for Cliente
+    /// Summary description for Despesa
     /// </summary>
-    public class ItensCompra
+    public class Despesa
     {
         //propriedades
         public int Codigo { get; set; }
-        public int Quantidade { get; set; }
-        public int PrecoCusto { get; set; }
-        public int CompraRevendaCodigo { get; set; }
-
+        public string Descricao { get; set; }
+        public string Valor { get; set; }
+        public DateTime DataVencimento { get; set; }
+        public string Status { get; set; }
 
         //construtor
-        public ItensCompra()
+        public Despesa()
         {
             //
             // TODO: Add constructor logic here

@@ -9,22 +9,23 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Fornecedor"></asp:Label>
+            &nbsp;<asp:DropDownList ID="ddlFornecedores" runat="server">
+            </asp:DropDownList>
+            <br />
+            <br />
+            <asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
+            &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+            <br />
+            <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
+            &nbsp;<asp:TextBox ID="txtData" runat="server"></asp:TextBox>
+            <p>
+                <asp:Button ID="btnSalvar" runat="server" Text="Adicionar Itens" OnClick="btnSalvar_Click" />
+            </p>
+            <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
         </div>
-        <asp:Label ID="Label1" runat="server" Text="Fornecedor"></asp:Label>
-&nbsp;<asp:DropDownList ID="ddlFornecedores" runat="server">
-        </asp:DropDownList>
-        <br />
-        <br />
-        <asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
-&nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
-        <br />
-        <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
-&nbsp;<asp:TextBox ID="txtData" runat="server"></asp:TextBox>
-        <p>
-            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
-        </p>
-        <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
-        
     </form>
+    
+    <a href="../ItensCompra/CadastrarItensCompra.aspx">Cadastrar Itens Compra</a>
 </body>
 </html>

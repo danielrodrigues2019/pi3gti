@@ -25,7 +25,7 @@
             </Columns>
         </asp:GridView>
     </form>
-    <a href="AlterarCliente.aspx">AlterarCliente.aspx</a>
-    <a href="CadastrarCliente.aspx">CadastrarCliente.aspx</a>
+    <a href="AlterarCliente.aspx">AlterarCliente</a>
+    <a href="CadastrarCliente.aspx">CadastrarCliente</a>
 </body>
 </html>

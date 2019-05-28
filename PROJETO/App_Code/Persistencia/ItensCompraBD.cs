@@ -22,7 +22,7 @@ namespace PROJETO.Persistencia
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?quantidade", itenscompra.Quantidade));
             objCommand.Parameters.Add(Mapped.Parameter("?precocusto", itenscompra.PrecoCusto));
-            //objCommand.Parameters.Add(Mapped.Parameter("?comprarevendacodigo", itenscompra.CompraRevendaCodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?comprarevendacodigo", itenscompra.CompraRevendaCodigo));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();

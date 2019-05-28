@@ -34,6 +34,6 @@
         </div>
     </form>
 </body>
-<a href="AlterarCliente.aspx">AlterarCliente.aspx</a>
-<a href="ListarCliente.aspx">ListarCliente.aspx</a>
+<a href="AlterarCliente.aspx">AlterarCliente</a>
+<a href="ListarCliente.aspx">ListarCliente</a>
 </html>
