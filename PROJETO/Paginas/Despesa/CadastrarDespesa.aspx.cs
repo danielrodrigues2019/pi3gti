@@ -30,10 +30,10 @@ public partial class Paginas_Despesa_CadastrarDespesa : System.Web.UI.Page
         Despesa despesa = new Despesa();
         despesa.Descricao = txtDescricao.Text;
         despesa.Valor = txtValor.Text;
-        despesa.DataVencimento = txtDataVencimento.Text;
+        despesa.DataVencimento = Convert.ToDateTime(txtDataVencimento.Text);
         despesa.Status = ddlstatus.Text;
         DespesaBD bd = new DespesaBD();
-        if (bd.Insert(despesa))Convert.ToDateTime
+        if (bd.Insert(despesa))
         {
             lblMensagem.Text = "Funcionário cadastrado com sucesso";
             txtDescricao.Text = "";

@@ -30,7 +30,8 @@ namespace PROJETO.Persistencia
             objCommand.Dispose();
             objConexao.Dispose();
             return true;
-        }
+        }
+
         //selectall
         public DataSet SelectAll()
         {
