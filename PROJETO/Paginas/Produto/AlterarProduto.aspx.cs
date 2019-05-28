@@ -18,7 +18,7 @@ public partial class Paginas_AlterarProduto : System.Web.UI.Page
             Produto produto = bd.Select(Convert.ToInt32(Session["ID"]));
             txtNome.Text = produto.Nome;
             txtPrecoVenda.Text = produto.PrecoVenda.ToString();
-            txtData.Text = produto.Data.ToShortDateString();
+            txtCadastro.Text = produto.Cadastro.ToShortDateString();
         }
     }
 
