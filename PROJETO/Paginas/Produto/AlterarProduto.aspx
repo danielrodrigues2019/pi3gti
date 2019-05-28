@@ -13,7 +13,7 @@
             Alteração de Produto<br />
             Nome:<asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
             <br />
-            Categoria:<asp:TextBox ID="txtCadastro" runat="server"></asp:TextBox>
+            Categoria:<asp:TextBox ID="txtData" runat="server"></asp:TextBox>
             <br />
             Preço de Venda:<asp:TextBox ID="txtPrecoVenda" runat="server"></asp:TextBox>
             <br />
