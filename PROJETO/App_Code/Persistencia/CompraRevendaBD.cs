@@ -13,21 +13,22 @@ namespace PROJETO.Persistencia
     {
         //métodos
         //insert
-        public bool Insert(CompraRevenda comprarevenda)
+        public int Insert(CompraRevenda comprarevenda)
         {
+            int retorno = 0;
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_comprarevenda(com_pagamento, com_data, forn_codigo) VALUES (?pagamento, ?data, ?fornecedor)";
+            string sql = "INSERT INTO tbl_comprarevenda(com_pagamento, com_data, forn_codigo) VALUES (?pagamento, ?data, ?fornecedor); SELECT LAST_INSERT_ID();";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?pagamento", comprarevenda.Pagamento));
             objCommand.Parameters.Add(Mapped.Parameter("?data", comprarevenda.Data));
             objCommand.Parameters.Add(Mapped.Parameter("?fornecedor", comprarevenda.FornecedorCodigo));
-            objCommand.ExecuteNonQuery();
+            retorno = Convert.ToInt32( objCommand.ExecuteScalar());
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
-            return true;
+            return retorno;
 
 
         }

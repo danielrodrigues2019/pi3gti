@@ -14,16 +14,21 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
     {
         if (!Page.IsPostBack)
         {
-            FornecedorBD bd = new FornecedorBD();
-            DataSet ds = bd.SelectAll();
-            ddlFornecedores.DataSource = ds.Tables[0].DefaultView;
-            ddlFornecedores.DataTextField = "forn_nome";
-            ddlFornecedores.DataValueField = "forn_codigo";
-            ddlFornecedores.DataBind();
-            ddlFornecedores.Items.Insert(0, "Selecione");
-
+            //FornecedorBD bd = new FornecedorBD();
+            //DataSet ds = bd.SelectAll();
+            //ddlFornecedores.DataSource = ds.Tables[0].DefaultView;
+            //ddlFornecedores.DataTextField = "forn_nome";
+            //ddlFornecedores.DataValueField = "forn_codigo";
+            //ddlFornecedores.DataBind();
+            //ddlFornecedores.Items.Insert(0, "Selecione");
+            CarregarGrid();
+            CarregarDrop();
 
         }
+
+        //todo grid tem que ter isso no page load
+        if (gdvProdutos.Rows.Count > 0) //-----------------
+            gdvProdutos.HeaderRow.TableSection = TableRowSection.TableHeader;
     }
 
     protected void TextBox2_TextChanged(object sender, EventArgs e)
@@ -42,11 +47,31 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
             compraRevenda.Pagamento = txtPagamento.Text;
             compraRevenda.Data = Convert.ToDateTime(txtData.Text);
             compraRevenda.FornecedorCodigo = idFornecedor;
-
-
             ComprarevendaBD bd = new ComprarevendaBD();
-            if (bd.Insert(compraRevenda))
+            int flag = bd.Insert(compraRevenda);
+
+            if (flag > 0)
             {
+                foreach (GridViewRow item in gdvProdutos.Rows)
+                {
+                    TextBox txtQnt = item.FindControl("txtQnt") as TextBox;
+                    TextBox txtPreco = item.FindControl("txtpreco") as TextBox;
+                    if (!String.IsNullOrEmpty(txtQnt.Text) && !String.IsNullOrEmpty(txtPreco.Text))
+                    {
+                        ItensCompra ic = new ItensCompra();
+                        ic.PrecoCusto = Convert.ToInt32(txtPreco.Text);
+                        ic.Quantidade = Convert.ToInt32(txtQnt.Text);
+                        ic.CompraRevendaCodigo = flag;
+                        ic.Produto = Convert.ToInt32(item.Cells[0].Text);
+
+                        ItensCompraBD icbd = new ItensCompraBD();
+
+                        icbd.Inserir(ic);
+
+                    }
+                }
+
+
                 lblMensagem.Text = "CompraRevenda cadastrada com sucesso";
                 txtPagamento.Text = "";
                 txtData.Text = "";
@@ -68,6 +93,38 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
             lblMensagem.Text = "Selecione um fornecedor";
             ddlFornecedores.Focus();
         }
+    }
+
+
+    void CarregarGrid()
+    {
+        DataSet ds = ProdutoBD.SelectAll();
+        int qtd = ds.Tables[0].Rows.Count;
+        if (qtd > 0)
+        {
+            gdvProdutos.DataSource = ds.Tables[0].DefaultView;
+            gdvProdutos.DataBind();
+            gdvProdutos.HeaderRow.TableSection = TableRowSection.TableHeader;
+        }
+    }
+
+    void CarregarDrop()
+    {
+        DataSet ds = FornecedorBD.SelectAll();
+        int qtd = ds.Tables[0].Rows.Count;
+        if (qtd > 0)
+        {
+            ddlFornecedores.DataSource = ds.Tables[0].DefaultView;
+            ddlFornecedores.DataTextField = "forn_nome";
+            ddlFornecedores.DataValueField = "forn_codigo";
+            ddlFornecedores.DataBind();
+            ddlFornecedores.Items.Insert(0, "Selecione");
+        }
+    }
+
+
+    protected void gdvProdutos_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
 
     }
 }

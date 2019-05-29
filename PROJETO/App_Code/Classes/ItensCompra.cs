@@ -16,14 +16,8 @@ namespace PROJETO.Classes
         public int Quantidade { get; set; }
         public int PrecoCusto { get; set; }
         public int CompraRevendaCodigo { get; set; }
-
-
-        //construtor
-        public ItensCompra()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
+        public int Produto { get; set; }
+        
+        
     }
 }
