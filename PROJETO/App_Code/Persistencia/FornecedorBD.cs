@@ -31,7 +31,7 @@ namespace PROJETO.Persistencia
             return true;
         }
         //selectall
-        public  DataSet SelectAll()
+        public static DataSet SelectAll()
         {
             DataSet ds = new DataSet();
             System.Data.IDbConnection objConexao;
@@ -48,7 +48,7 @@ namespace PROJETO.Persistencia
         }
         //select
         //select
-        public Fornecedor Select(int id)
+        public static Fornecedor Select(int id)
         {
 
             Fornecedor obj = null;
