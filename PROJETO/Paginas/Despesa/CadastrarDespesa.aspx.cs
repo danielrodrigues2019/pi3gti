@@ -35,7 +35,7 @@ public partial class Paginas_Despesa_CadastrarDespesa : System.Web.UI.Page
         DespesaBD bd = new DespesaBD();
         if (bd.Insert(despesa))
         {
-            lblMensagem.Text = "Funcionário cadastrado com sucesso";
+            lblMensagem.Text = "Despesa cadastrada com sucesso";
             txtDescricao.Text = "";
             txtValor.Text = "";
             txtDataVencimento.Text = "";

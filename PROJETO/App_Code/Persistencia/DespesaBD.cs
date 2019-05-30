@@ -49,8 +49,51 @@ namespace PROJETO.Persistencia
             return ds;
         }
         //select
+        public Despesa Select(int id)
+        {
+
+            Despesa obj = null;
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataReader objDataReader;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM tbl_despesa WHERE des_codigo = ?codigo", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                obj = new Despesa();
+                obj.Codigo = Convert.ToInt32(objDataReader["des_codigo"]);
+                obj.Descricao = Convert.ToString(objDataReader["des_descricao"]);
+                obj.Valor = Convert.ToString(objDataReader["des_valor"]);
+                obj.DataVencimento = Convert.ToDateTime(objDataReader["des_datavencimento"]);
+                obj.Status = Convert.ToString(objDataReader["des_status"]);
+            }
+            objDataReader.Close();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            objDataReader.Dispose();
+            return obj;
+
+
+        }
         //update
         //delete
+        public bool Delete(int id)
+        {
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            string sql = "DELETE FROM tbl_despesa WHERE des_codigo=?codigo";
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command(sql, objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
+            objCommand.ExecuteNonQuery();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return true;
+        }
         //construtor
         public DespesaBD()
         {
