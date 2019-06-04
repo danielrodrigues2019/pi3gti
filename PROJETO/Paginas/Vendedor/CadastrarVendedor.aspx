@@ -29,6 +29,8 @@
             &nbsp;&nbsp;
         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
             <br />
+            Tipo<asp:TextBox ID="txtTipo" runat="server"></asp:TextBox>
+            <br />
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="salvar_Click" />
             <br />

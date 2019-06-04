@@ -47,8 +47,26 @@ namespace PROJETO.Persistencia
             return ds;
         }
         //select
+        public  DataSet SelectAll1()
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM tbl_fornecedor", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+        }
+
+
+
         //select
-        public static Fornecedor Select(int id)
+        public  Fornecedor Select(int id)
         {
 
             Fornecedor obj = null;

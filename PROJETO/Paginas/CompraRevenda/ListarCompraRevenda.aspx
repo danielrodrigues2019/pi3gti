@@ -12,14 +12,12 @@
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar"
-                            CommandArgument='<%# Bind("cev_codigo")%>'>Alterar</asp:LinkButton>
+                        <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar" CommandArgument='<%# Bind("com_codigo")%>'>Alterar</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar"
-                            CommandArgument='<%# Bind("cev_codigo")%>'>Excluir</asp:LinkButton>
+                        <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar" CommandArgument='<%# Bind("com_codigo")%>'>Excluir</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

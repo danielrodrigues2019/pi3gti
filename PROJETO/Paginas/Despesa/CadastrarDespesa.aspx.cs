@@ -39,7 +39,8 @@ public partial class Paginas_Despesa_CadastrarDespesa : System.Web.UI.Page
             txtDescricao.Text = "";
             txtValor.Text = "";
             txtDataVencimento.Text = "";
-            ddlstatus.Focus();
+            txtDescricao.Focus();
+            //comenta ele  ddlstatus.Focus();
         }
         else
         {

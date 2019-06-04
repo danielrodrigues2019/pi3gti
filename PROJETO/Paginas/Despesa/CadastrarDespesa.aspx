@@ -25,7 +25,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <asp:DropDownList ID="ddlstatus" runat="server" DataTextField="Status" DataTextFormatString="Status"></asp:DropDownList>
-            &nbsp;&nbsp;
+            &nbsp;
                    <br />
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="salvar_Click" />

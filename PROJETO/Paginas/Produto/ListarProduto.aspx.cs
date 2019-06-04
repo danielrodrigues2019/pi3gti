@@ -13,7 +13,7 @@ public partial class Paginas_ListarProduto : System.Web.UI.Page
     private void Carrega()
     {
         ProdutoBD bd = new ProdutoBD();
-        DataSet ds = bd.SelectAll();
+        DataSet ds = bd.SelectAll1();
         GridView1.DataSource = ds.Tables[0].DefaultView;
         GridView1.DataBind();
     }

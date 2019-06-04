@@ -109,7 +109,8 @@ namespace PROJETO.Persistencia
             objCommand.Dispose();
             objConexao.Dispose();
             return true;
-        }
+        }
+
         //construtor
 
         public EncomendaBD()

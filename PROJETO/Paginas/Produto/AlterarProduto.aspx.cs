@@ -18,7 +18,7 @@ public partial class Paginas_AlterarProduto : System.Web.UI.Page
             Produto produto = bd.Select(Convert.ToInt32(Session["ID"]));
             txtNome.Text = produto.Nome;
             txtPrecoVenda.Text = produto.PrecoVenda.ToString();
-            txtCadastro.Text = produto.Cadastro.ToShortDateString();
+           
         }
     }
 
@@ -28,7 +28,7 @@ public partial class Paginas_AlterarProduto : System.Web.UI.Page
         Produto produto = bd.Select(Convert.ToInt32(Session["ID"]));
         produto.Nome = txtNome.Text;
         produto.PrecoVenda = Convert.ToDouble(txtPrecoVenda.Text);
-        produto.Data = Convert.ToDateTime(txtData.Text);
+        
         if (bd.Update(produto))
         {
             lblMensagem.Text = "Produto alterado com sucesso";

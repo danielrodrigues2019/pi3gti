@@ -12,7 +12,27 @@ namespace PROJETO.Persistencia
     /// Summary description for VendedorBD
     /// </summary>
     public class VendedorBD
+    { 
+        public bool Insert(Vendedor vendedor)
     {
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        string sql = "INSERT INTO tbl_vendedor(ven_nome, ven_usuario, ven_senha, ven_cpf, ven_email, ven_tipo) VALUES (?nome, ?usuario, ?senha, ?cpf, ?email, ?tipo)";
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command(sql, objConexao);
+        objCommand.Parameters.Add(Mapped.Parameter("?nome",vendedor.Nome));
+        objCommand.Parameters.Add(Mapped.Parameter("?usuario",vendedor.Usuario));
+        objCommand.Parameters.Add(Mapped.Parameter("?senha",vendedor.Senha));
+        objCommand.Parameters.Add(Mapped.Parameter("?cpf", vendedor.CPF));
+            objCommand.Parameters.Add(Mapped.Parameter("?email", vendedor.Email));
+            objCommand.Parameters.Add(Mapped.Parameter("?tipo", vendedor.Tipo));
+            objCommand.ExecuteNonQuery();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        return true;
+    }
+    
         public Vendedor Autentica(string email, string senha)
         {
             Vendedor obj = null;
