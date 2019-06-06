@@ -27,6 +27,10 @@
             &nbsp;&nbsp;
         <asp:TextBox ID="txtEndereco" runat="server"></asp:TextBox>
             <br />
+            <asp:Label ID="datacadastro" runat="server" Text="Data de Cadastro"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtDatacadastro" runat="server" TextMode="Date"></asp:TextBox>
+            <br />
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="salvar_Click" />
             <br />

@@ -33,11 +33,11 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_produto(pro_nome, pro_data, pro_precovenda) VALUES (?nome, ?data, ?precovenda)";
+            string sql = "INSERT INTO tbl_produto(pro_nome, pro_datacadastro, pro_precovenda) VALUES (?nome, ?datacadastro, ?precovenda)";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?nome", produto.Nome));
-            objCommand.Parameters.Add(Mapped.Parameter("?data", produto.Data));
+            objCommand.Parameters.Add(Mapped.Parameter("?datacadastro", produto.Datacadastro));
             objCommand.Parameters.Add(Mapped.Parameter("?precovenda", produto.PrecoVenda));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
@@ -61,8 +61,8 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-        //selectall1
-        public  DataSet SelectAll1()
+
+        public DataSet SelectAll1()
         {
             DataSet ds = new DataSet();
             System.Data.IDbConnection objConexao;
@@ -77,6 +77,9 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
+        //selectall1
+
+
         //select
         public Produto Select(int id)
         {
@@ -93,7 +96,7 @@ namespace PROJETO.Persistencia
                 obj = new Produto();
                 obj.Codigo = Convert.ToInt32(objDataReader["pro_codigo"]);
                 obj.Nome = Convert.ToString(objDataReader["pro_nome"]);
-                obj.Data = Convert.ToDateTime(objDataReader["pro_data"]);
+                obj.Datacadastro = Convert.ToString(objDataReader["pro_datacadastro"]);
                 obj.PrecoVenda = Convert.ToDouble(objDataReader["pro_precovenda"]);
             }
             objDataReader.Close();
@@ -108,11 +111,11 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE tbl_produto SET pro_nome=?nome, pro_data=?data, pro_precovenda=?precovenda WHERE pro_codigo=?codigo";
+            string sql = "UPDATE tbl_produto SET pro_nome=?nome, pro_datacadastro=?datacadastro, pro_precovenda=?precovenda WHERE pro_codigo=?codigo";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?nome", produto.Nome));
-            objCommand.Parameters.Add(Mapped.Parameter("?data", produto.Data));
+            objCommand.Parameters.Add(Mapped.Parameter("?datacadastro", produto.Datacadastro));
             objCommand.Parameters.Add(Mapped.Parameter("?precovenda", produto.PrecoVenda));
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", produto.Codigo));
             objCommand.ExecuteNonQuery();

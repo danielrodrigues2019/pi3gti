@@ -22,8 +22,19 @@
         </asp:DropDownList>
         <br />
         <br />
-        <asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
-        &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+        <br />
+        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
+        <asp:DropDownList ID="ddl" runat="server">
+            <asp:ListItem>Selecione</asp:ListItem>
+            <asp:ListItem>Débito</asp:ListItem>
+            <asp:ListItem>Crédito</asp:ListItem>
+            <asp:ListItem>Dinheiro</asp:ListItem>
+            <asp:ListItem>Carnê</asp:ListItem>
+
+        </asp:DropDownList>
+        <br />
+        <%--<asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
+        &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>--%>
         <br />
         <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
         &nbsp;<asp:TextBox ID="txtData" CssClass="" TextMode="Date" runat="server"></asp:TextBox>
@@ -39,7 +50,7 @@
                         <asp:TextBox ID="txtQnt" runat="server" TextMode="Number"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                  <asp:TemplateField HeaderText="Preço de Compra">
+                <asp:TemplateField HeaderText="Preço de Compra">
                     <ItemTemplate>
                         <asp:TextBox ID="txtpreco" runat="server" TextMode="Number"></asp:TextBox>
                     </ItemTemplate>
@@ -58,7 +69,7 @@
 
     </form>
     <script src="../../js/jquery-1.12.3.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link href="../../Scripts/bootstrap-select.min.css" rel="stylesheet" />
     <script src="../../Scripts/bootstrap-select.min.js"></script>
     <%--caso seja master--%>

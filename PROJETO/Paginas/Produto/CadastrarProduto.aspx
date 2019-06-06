@@ -13,9 +13,9 @@
             Cadastro de Produto<br />
             Nome:<asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
             <br />
-            Data de Cadastro:<asp:TextBox ID="txtData" runat="server"></asp:TextBox>
+            Data de Cadastro:<asp:TextBox ID="txtData" runat="server" TextMode="Date"></asp:TextBox>
             <br />
-            Preço de Venda:<asp:TextBox ID="txtPrecoVenda" runat="server"></asp:TextBox>
+            Preço de Venda:<asp:TextBox ID="txtPrecoVenda" runat="server" TextMode="Number"></asp:TextBox>
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
             <br />

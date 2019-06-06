@@ -17,14 +17,14 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_cliente(cli_nome, cli_telefone, cli_endereco, cli_cpf) VALUES (?nome, ?telefone, ?endereco, ?cpf)";
+            string sql = "INSERT INTO tbl_cliente(cli_nome, cli_telefone, cli_endereco, cli_cpf, cli_datacadastro) VALUES (?nome, ?telefone, ?endereco, ?cpf, ?datacadastro)";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
             objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
             objCommand.Parameters.Add(Mapped.Parameter("?endereco", cliente.Endereco));
             objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.CPF));
-
+            objCommand.Parameters.Add(Mapped.Parameter("?datacadastro", cliente.Datacadastro));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();
@@ -47,7 +47,7 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-         //select
+        //select
         public Cliente Select(int id)
         {
             Cliente obj = null;
@@ -61,11 +61,12 @@ namespace PROJETO.Persistencia
             while (objDataReader.Read())
             {
                 obj = new Cliente();
-                obj.Codigo = Convert.ToInt32 (objDataReader["cli_codigo"]);
+                obj.Codigo = Convert.ToInt32(objDataReader["cli_codigo"]);
                 obj.Nome = Convert.ToString(objDataReader["cli_nome"]);
                 obj.Telefone = Convert.ToString(objDataReader["cli_telefone"]);
                 obj.Endereco = Convert.ToString(objDataReader["cli_endereco"]);
                 obj.CPF = Convert.ToString(objDataReader["cli_cpf"]);
+                obj.CPF = Convert.ToString(objDataReader["cli_datacadastro"]);
             }
             objDataReader.Close();
             objConexao.Close();
@@ -87,6 +88,7 @@ namespace PROJETO.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
             objCommand.Parameters.Add(Mapped.Parameter("?endereco", cliente.Endereco));
             objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.CPF));
+            objCommand.Parameters.Add(Mapped.Parameter("?datacadastro", cliente.Datacadastro));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();

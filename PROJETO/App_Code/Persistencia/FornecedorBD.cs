@@ -46,8 +46,8 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-        //select
-        public  DataSet SelectAll1()
+
+        public DataSet SelectAll1()
         {
             DataSet ds = new DataSet();
             System.Data.IDbConnection objConexao;
@@ -62,11 +62,13 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
+        //select
+
 
 
 
         //select
-        public  Fornecedor Select(int id)
+        public Fornecedor Select(int id)
         {
 
             Fornecedor obj = null;

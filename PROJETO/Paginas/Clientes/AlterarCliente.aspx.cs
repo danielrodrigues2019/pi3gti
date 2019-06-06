@@ -19,6 +19,7 @@ public partial class Paginas_Alterar : System.Web.UI.Page
             txtTelefone.Text = cliente.Telefone.ToString();
             txtCpf.Text = cliente.CPF.ToString();
             txtEndereco.Text = cliente.Endereco;
+            txtTelefone.Text = cliente.Telefone;
         }
 
     }
@@ -31,6 +32,7 @@ public partial class Paginas_Alterar : System.Web.UI.Page
         cliente.Telefone = txtTelefone.Text;
         cliente.Endereco = txtEndereco.Text;
         cliente.CPF = txtCpf.Text;
+        txtTelefone.Text = cliente.Telefone;
         if (bd.Update(cliente))
         {
             lblMensagem.Text = "Cliente alterado com sucesso";

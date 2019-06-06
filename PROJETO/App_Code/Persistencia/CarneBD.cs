@@ -33,7 +33,7 @@ public class CarneBD
         System.Data.IDbCommand objCommand;
         System.Data.IDataAdapter objDataAdapter;
         objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT * FROM tbl_contacorrente", objConexao);
+        objCommand = Mapped.Command("SELECT * FROM tbl_parcelavenda", objConexao);
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);
         objConexao.Close();
@@ -41,6 +41,22 @@ public class CarneBD
         objConexao.Dispose();
         return ds;
     }
+    // selectClientes
+    public DataSet SelectAllClientes()
+    {
+        DataSet ds = new DataSet();
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT * FROM tbl_cliente WHERE cli_codigo=?codigo", objConexao);        
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);        
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        return ds;
+    }
     public CarneBD()
     {
         //

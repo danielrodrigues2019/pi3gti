@@ -44,7 +44,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
 
 
             CompraRevenda compraRevenda = new CompraRevenda();
-            compraRevenda.Pagamento = txtPagamento.Text;
+            compraRevenda.Pagamento = ddlpagamento.Text;
             compraRevenda.Data = Convert.ToDateTime(txtData.Text);
             compraRevenda.FornecedorCodigo = idFornecedor;
             ComprarevendaBD bd = new ComprarevendaBD();
@@ -73,7 +73,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
 
 
                 lblMensagem.Text = "CompraRevenda cadastrada com sucesso";
-                txtPagamento.Text = "";
+                ddlpagamento.Text = "";
                 txtData.Text = "";
                 txtData.Focus();
 
@@ -96,7 +96,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
     }
 
 
-    void CarregarGrid()
+    private void CarregarGrid()
     {
         DataSet ds = ProdutoBD.SelectAll();
         int qtd = ds.Tables[0].Rows.Count;

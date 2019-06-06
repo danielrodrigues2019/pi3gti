@@ -21,7 +21,7 @@ public partial class Paginas_CadastrarProduto : System.Web.UI.Page
 
         Produto produto = new Produto();
         produto.Nome = txtNome.Text;
-        produto.Data = Convert.ToDateTime(txtData.Text);
+        produto.Datacadastro = Convert.ToString(txtData.Text);
         produto.PrecoVenda = Convert.ToDouble(txtPrecoVenda.Text);
         ProdutoBD bd = new ProdutoBD();
         if (bd.Insert(produto))
