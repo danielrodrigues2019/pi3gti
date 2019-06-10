@@ -17,7 +17,7 @@ namespace PROJETO.Classes
         public string Telefone { get; set; }
         public string Endereco { get; set; }
         public string CPF { get; set; }
-        public string Datacadastro { get; set; }
+        public DateTime Datacadastro { get; set; }
         public string Status { get; set; }
 
         //construtor

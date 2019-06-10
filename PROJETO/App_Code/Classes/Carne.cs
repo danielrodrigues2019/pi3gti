@@ -9,8 +9,11 @@ using System.Web;
 public class Carne
 {
     public int Codigo { get; set; }
-    public string Tipo { get; set; }
     public int Clicodigo { get; set; }
+    public DateTime DataParcela { get; set; }
+    public decimal Valor{ get; set; }
+    public int Status { get; set; }
+    public int NumeroParcelas { get; set; }
 
 
     public Carne()

@@ -4,33 +4,62 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Cadastrar Conta Corrente</title>
+    <title>Cadastrar Carnê</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <div style="margin-left: 40px">
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label ID="contacorrente" runat="server" Text="Conta Corrente"></asp:Label>
-                <asp:DropDownList ID="ddlStatus" runat="server">
-                    <asp:ListItem Selected="True" Value="Select"> Selecione </asp:ListItem>
-                    <asp:ListItem Value="contacorrente"> Conta Corrente </asp:ListItem>
-                    <asp:ListItem Value="carne"> Carnê </asp:ListItem>
+                
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblcliente" runat="server" Text="Selecione o Cliente"></asp:Label>
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="ddlCliente" runat="server" data-live-search="true">
                 </asp:DropDownList>
-
-                <br />
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label ID="cliente" runat="server" Text="Cliente"></asp:Label>
-                <asp:DropDownList ID="ddlCliente" runat="server"></asp:DropDownList>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;<br />
                 <br />
                 <br />
-                &nbsp;
-        
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblData" runat="server" Text="Data:"></asp:Label>
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtData" runat="server" TextMode="Date"></asp:TextBox>
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblValor" runat="server" Text="Valor da Parcela"></asp:Label>
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>
+&nbsp;&nbsp;
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblNumeroParcelas" runat="server" Text="Número de Parcelas: "></asp:Label>
+                <br />
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtNparcelas" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;
+                
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="salvar_Click" />
                 <br />
+                &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
     </form>

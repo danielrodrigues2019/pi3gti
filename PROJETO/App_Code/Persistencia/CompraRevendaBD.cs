@@ -49,7 +49,32 @@ namespace PROJETO.Persistencia
             return ds;
         }
         //select
-
+        public CompraRevenda Select(int id)
+        {
+            CompraRevenda obj = null;
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataReader objDataReader;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM tbl_comprarevenda WHERE com_codigo = ?codigo", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                obj = new CompraRevenda();
+                obj.Codigo = Convert.ToInt32(objDataReader["enc_codigo"]);
+                obj.FornecedorCodigo = Convert.ToInt32(objDataReader["forn_codigo"]);
+                obj.Pagamento = Convert.ToString(objDataReader["com_pagamento"]);
+                obj.Data = Convert.ToDateTime(objDataReader["com_data"]);
+                
+            }
+            objDataReader.Close();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            objDataReader.Dispose();
+            return obj;
+        }
         //update
         //delete
         //construtor
