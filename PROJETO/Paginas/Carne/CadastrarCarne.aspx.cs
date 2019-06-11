@@ -13,8 +13,26 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+            CarregarClientes();
     }
+
+     void CarregarClientes()
+    {
+        DataSet ds = ClienteBD.SelectTodos();
+        int qtd = ds.Tables[0].Rows.Count;
+        if (qtd > 0)
+        {
+            ddlCliente.DataSource = ds.Tables[0].DefaultView;
+            ddlCliente.DataValueField = "cli_codigo";
+            ddlCliente.DataTextField = "cli_nome";
+            
+            ddlCliente.DataBind();
+            ddlCliente.Items.Insert(0,new ListItem("Selecione", "0"));
+
+        }
+    }
+
 
     protected void salvar_Click(object sender, EventArgs e)
     {
@@ -51,7 +69,7 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
             
 
 
-            lblMensagem.Text = "CompraRevenda cadastrada com sucesso";
+            lblMensagem.Text = "Carnê cadastrada com sucesso";
             ddlCliente.Text = "";
             txtData.Text = "";
             txtData.Focus();
@@ -70,21 +88,7 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
     }
 
 }
-    //void CarregarDrop()
-    //{
-    //    DataSet ds = CarneBD.SelectAll();
-    //    int qtd = ds.Tables[0].Rows.Count;
-    //    if (qtd > 0)
-    //    {
-    //        dllCliente.DataSource = ds.Tables[0].DefaultView;
-    //        dllCliente.DataTextField = "cli_nome";
-    //        dllCliente.DataValueField = "cli_codigo";
-    //        dllCliente.DataBind();
-    //        dllCliente.Items.Insert(0, "Selecione");
-    //    }
-//    }
-
-//}
+    
 
 
     
