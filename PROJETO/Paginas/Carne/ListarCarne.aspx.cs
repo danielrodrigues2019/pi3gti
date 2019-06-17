@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using PROJETO.Persistencia;
 using System.Data;
 
+
 public partial class Paginas_Carne_ListarCarne : System.Web.UI.Page
 {
     private void Carrega()
@@ -28,16 +29,18 @@ public partial class Paginas_Carne_ListarCarne : System.Web.UI.Page
             case "Alterar":
                 codigo = Convert.ToInt32(e.CommandArgument);
                 Session["ID"] = codigo;
-                Response.Redirect("AlterarCarne.aspx");
+                Response.Redirect("AlterarFornecedor.aspx");
                 break;
-            case "Deletar":
-                codigo = Convert.ToInt32(e.CommandArgument);
-                CarneBD bd = new CarneBD();
-                bd.Delete(codigo);
-                Carrega();
-                break;
-            default:
-                break;
+            //case "Deletar":
+            //    codigo = Convert.ToInt32(e.CommandArgument);
+            //    CarneBD bd = new CarneBD();
+            //    bd.Delete(codigo);
+            //    Carrega();
+            //    break;
+            //default:
+            //    break;
         }
     }
+
+
 }

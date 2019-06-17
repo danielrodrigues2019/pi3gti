@@ -16,6 +16,9 @@ namespace PROJETO.Persistencia
         //insert
         public bool Insert(Despesa despesa)
         {
+            if (String.IsNullOrEmpty(despesa.Descricao))
+                despesa.Descricao = "Sem descrição";
+
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
             string sql = "INSERT INTO tbl_despesa(des_descricao, des_valor, des_datavencimento, des_status) VALUES (?descricao, ?valor, ?datavencimento, ?status)";

@@ -34,25 +34,7 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
     }
 
 
-    protected void salvar_Click(object sender, EventArgs e)
-    {
-
-        Despesa despesa = new Despesa();
-
-        DespesaBD bd = new DespesaBD();
-        if (bd.Insert(despesa))
-        {
-            lblMensagem.Text = "Carnê cadastrada com sucesso";
-            ddlCliente.Text = "";
-
-        }
-        else
-        {
-            lblMensagem.Text = "Erro ao salvar.";
-        }
-
-
-    }
+   
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
         if (ddlCliente.SelectedItem.Text != "Selecione")
@@ -63,14 +45,26 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
             Carne carne = new Carne();
             carne.Valor = Convert.ToDecimal(txtValor.Text);
             carne.DataParcela = Convert.ToDateTime(txtData.Text);
-            
+            carne.NumeroParcelas = Convert.ToInt32(txtNparcelas.Text);
             carne.Clicodigo = idCliente;
+
+           
+
             CarneBD bd = new CarneBD();
-            
+            if (bd.Insert(carne))
+            {
+                lblMensagem.Text = "Carnê cadastrada com sucesso";
+              
+
+            }
+            else
+            {
+                lblMensagem.Text = "Erro ao salvar.";
+            }
 
 
             lblMensagem.Text = "Carnê cadastrada com sucesso";
-            ddlCliente.Text = "";
+            
             txtData.Text = "";
             txtData.Focus();
 
@@ -87,6 +81,8 @@ public partial class Paginas_Carne_CadastrarCarne : System.Web.UI.Page
 
     }
 
+
+    
 }
     
 

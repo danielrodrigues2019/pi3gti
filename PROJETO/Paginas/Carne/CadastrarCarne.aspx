@@ -47,7 +47,7 @@
                 <br />
 &nbsp;&nbsp;&nbsp;
                 
-            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="salvar_Click" />
+            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
                 <br />
                 &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>

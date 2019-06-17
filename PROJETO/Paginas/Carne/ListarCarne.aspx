@@ -9,24 +9,20 @@
 <body>
     <form id="form1" runat="server">
         <div>
-             <div>
-            <asp:GridView ID="GridView1" runat="server">
+            <asp:GridView ID="GridView1" runat="server" OnRowCommand="GridView1_RowCommand">
                 <Columns>
- <asp:TemplateField>
- <ItemTemplate>
- <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar"
-CommandArgument='<%# Bind("cc_codigo")%>'>Alterar</asp:LinkButton>
- </ItemTemplate>
- </asp:TemplateField>
- <asp:TemplateField>
- <ItemTemplate>
- <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar"
-CommandArgument='<%# Bind("cc_codigo")%>'>Excluir</asp:LinkButton>
- </ItemTemplate>
- </asp:TemplateField>
- </Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar" CommandArgument='<%# Bind("parc_codigo")%>'>Alterar</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar" CommandArgument='<%# Bind("parc_codigo")%>'>Excluir</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
-        </div>
         </div>
     </form>
 </body>

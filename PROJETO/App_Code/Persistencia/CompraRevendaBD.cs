@@ -24,13 +24,11 @@ namespace PROJETO.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?pagamento", comprarevenda.Pagamento));
             objCommand.Parameters.Add(Mapped.Parameter("?data", comprarevenda.Data));
             objCommand.Parameters.Add(Mapped.Parameter("?fornecedor", comprarevenda.FornecedorCodigo));
-            retorno = Convert.ToInt32( objCommand.ExecuteScalar());
+            retorno = Convert.ToInt32(objCommand.ExecuteScalar());
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
             return retorno;
-
-
         }
         //selectall
         public DataSet SelectAll()
@@ -66,7 +64,7 @@ namespace PROJETO.Persistencia
                 obj.FornecedorCodigo = Convert.ToInt32(objDataReader["forn_codigo"]);
                 obj.Pagamento = Convert.ToString(objDataReader["com_pagamento"]);
                 obj.Data = Convert.ToDateTime(objDataReader["com_data"]);
-                
+
             }
             objDataReader.Close();
             objConexao.Close();
@@ -95,13 +93,13 @@ namespace PROJETO.Persistencia
             return ds;
 
         }
-            public ComprarevendaBD()
+        public ComprarevendaBD()
         {
             //
             // TODO: Add constructor logic here
             //
         }
-        
+
     }
 
 }

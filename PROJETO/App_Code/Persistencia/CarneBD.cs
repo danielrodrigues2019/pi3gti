@@ -59,7 +59,32 @@ public class CarneBD
         objCommand.Dispose();
         objConexao.Dispose();
         return ds;
-    }
+    }    // select    public Carne Select(Carne carne)
+    {
+        Carne obj = null;
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT * FROM tbl_parcelavenda WHERE parc_codigo = ?codigo", objConexao);
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj = new Carne();
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", carne.Codigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?clicodigo", carne.Clicodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?data", carne.DataParcela));
+            objCommand.Parameters.Add(Mapped.Parameter("?valor", carne.Valor));
+            objCommand.Parameters.Add(Mapped.Parameter("?status", carne.Status));
+            objCommand.Parameters.Add(Mapped.Parameter("?nparcelas", carne.NumeroParcelas));
+        }
+        objDataReader.Close();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        objDataReader.Dispose();
+        return obj;
+    }
     public CarneBD()
     {
         //

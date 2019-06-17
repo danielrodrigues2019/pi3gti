@@ -44,7 +44,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
 
 
             CompraRevenda compraRevenda = new CompraRevenda();
-            compraRevenda.Pagamento = ddlpagamento.Text;
+            compraRevenda.Pagamento = ddl.Text;
             compraRevenda.Data = Convert.ToDateTime(txtData.Text);
             compraRevenda.FornecedorCodigo = idFornecedor;
             ComprarevendaBD bd = new ComprarevendaBD();
