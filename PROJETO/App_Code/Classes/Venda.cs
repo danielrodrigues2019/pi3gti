@@ -13,8 +13,8 @@ namespace PROJETO.Classes
         //propriedades
         public int Codigo { get; set; }
         public string Pagamento { get; set; }
-        public decimal Valor { get; set; }
-        public string Data { get; set; }
+        public int ClienteCodigo { get; set; }
+        public DateTime Data { get; set; }
         //construtor
         public Venda()
         {

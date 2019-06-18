@@ -1,27 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FATEC;
+using System;
 using System.Web;
-using System.Data;
 using PROJETO.Classes;
-using FATEC;
+using System.Data;
 
 namespace PROJETO.Persistencia
 {
-
+    /// <summary>
+    /// Summary 
+    /// </summary>
     public class VendaBD
     {
         //métodos
-        //Search
-        public DataSet Search(string termo)
+        //insert
+        public int Insert(Venda venda)
+        {
+            int retorno = 0;
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            string sql = "INSERT INTO tbl_venda(vnd_pagamento, vnd_data, cli_codigo) VALUES (?pagamento, ?data, ?cliente); SELECT LAST_INSERT_ID();";
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command(sql, objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?pagamento",venda.Pagamento));
+            objCommand.Parameters.Add(Mapped.Parameter("?data",venda.Data));
+            objCommand.Parameters.Add(Mapped.Parameter("?cliente",venda.ClienteCodigo));
+            retorno = Convert.ToInt32(objCommand.ExecuteScalar());
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return retorno;
+        }
+        //selectall
+        public DataSet SelectAll()
         {
             DataSet ds = new DataSet();
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
             System.Data.IDataAdapter objDataAdapter;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM tbl_venda WHERE vnd_codigo LIKE ? nome ORDER BY vnd_codigo", objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?codigo", '%' + termo + '%'));
+            objCommand = Mapped.Command("SELECT * FROM tbl_venda", objConexao);
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
             objConexao.Close();
@@ -29,27 +46,53 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-        //insert
-        public bool Insert(Venda venda)
+        //select
+        public Venda Select(int id)
         {
+            Venda obj = null;
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_venda(vnd_pagamento, vnd_data, vnd_valor) VALUES (?pagamento, ?data, ?valor)";
+            System.Data.IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command(sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?pagamento", venda.Pagamento));
-            objCommand.Parameters.Add(Mapped.Parameter("?data", venda.Data));
-            objCommand.Parameters.Add(Mapped.Parameter("?valor", venda.Valor));
-            objCommand.ExecuteNonQuery();
+            objCommand = Mapped.Command("SELECT * FROM tbl_venda WHERE vnd_codigo=?codigo", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                obj = new Venda();
+                obj.Codigo = Convert.ToInt32(objDataReader["enc_codigo"]);
+                obj.ClienteCodigo = Convert.ToInt32(objDataReader["cli_codigo"]);
+                obj.Pagamento = Convert.ToString(objDataReader["vnd_pagamento"]);
+                obj.Data = Convert.ToDateTime(objDataReader["vnd_data"]);
+
+            }
+            objDataReader.Close();
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
-            return true;
+            objDataReader.Dispose();
+            return obj;
         }
-        //selectall
-        //select
         //update
         //delete
+        //construtor
+        //getlastid
+        public DataSet SelectLastID()
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT LAST_INSERT_ID()", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+
+        }
         //relatoriovenda
         public DataSet QuantidadeVendas()
         {
@@ -73,5 +116,7 @@ namespace PROJETO.Persistencia
             // TODO: Add constructor logic here
             //
         }
+
     }
+
 }
