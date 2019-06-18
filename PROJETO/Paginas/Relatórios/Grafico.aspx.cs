@@ -12,6 +12,13 @@ public partial class Paginas_Graficos_Grafico : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        ObterDados();
+    }
 
+    protected void ObterDados()
+    {
+        DataSet cn = new Conection();
+
+        SqlConnection conn = new 
     }
 }

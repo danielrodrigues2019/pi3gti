@@ -50,7 +50,23 @@ namespace PROJETO.Persistencia
         //select
         //update
         //delete
-        //construtor
+        //relatoriovenda
+        public DataSet QuantidadeVendas()
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT SUM(itv_preco)  as 'Valor Total', COUNT(vda.vnd_codigo) as 'Quantidade de venda' from tbl_venda vda inner join tbl_itensvenda itv on vda.vnd_codigo = itv.vnd_codigo where vnd_data between '1990-01-01' and '2000-02-20'; ", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+
+        }
         public VendaBD()
         {
             //
