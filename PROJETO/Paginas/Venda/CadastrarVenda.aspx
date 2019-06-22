@@ -17,15 +17,19 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="Label1" runat="server" Text="Cliente"></asp:Label>
+        <asp:Label ID="lblVendedor" runat="server" Text="Vendedor"></asp:Label>
+        <asp:DropDownList ID="ddlVendedor" runat="server" data-live-search="true">
+        </asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblCliente" runat="server" Text="Cliente"></asp:Label>
         &nbsp;<asp:DropDownList ID="ddlClientes" CssClass="" data-live-search="true" runat="server">
         </asp:DropDownList>
         <br />
         <br />
-        <br />
         <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
         <asp:DropDownList ID="ddl" runat="server">
-            <asp:ListItem>Selecione</asp:ListItem>            
+            <asp:ListItem>Selecione</asp:ListItem>
             <asp:ListItem>Débito</asp:ListItem>
             <asp:ListItem>Crédito</asp:ListItem>
             <asp:ListItem>Dinheiro</asp:ListItem>

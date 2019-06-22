@@ -3,6 +3,7 @@ using System;
 using System.Web;
 using PROJETO.Classes;
 using System.Data;
+using System.Collections.Generic;
 
 namespace PROJETO.Persistencia
 {
@@ -18,12 +19,13 @@ namespace PROJETO.Persistencia
             int retorno = 0;
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_venda(vnd_pagamento, vnd_data, cli_codigo) VALUES (?pagamento, ?data, ?cliente); SELECT LAST_INSERT_ID();";
+            string sql = "INSERT INTO tbl_venda(vnd_pagamento, vnd_data, cli_codigo, ven_codigo) VALUES (?pagamento, ?data, ?cliente, ?vendedor); SELECT LAST_INSERT_ID();";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?pagamento",venda.Pagamento));
-            objCommand.Parameters.Add(Mapped.Parameter("?data",venda.Data));
-            objCommand.Parameters.Add(Mapped.Parameter("?cliente",venda.ClienteCodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?pagamento", venda.Pagamento));
+            objCommand.Parameters.Add(Mapped.Parameter("?data", venda.Data));
+            objCommand.Parameters.Add(Mapped.Parameter("?cliente", venda.ClienteCodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?vendedor", venda.VendedorCodigo));
             retorno = Convert.ToInt32(objCommand.ExecuteScalar());
             objConexao.Close();
             objCommand.Dispose();
@@ -94,21 +96,35 @@ namespace PROJETO.Persistencia
 
         }
         //relatoriovenda
-        public DataSet QuantidadeVendas()
+        public string[][] QuantidadeVendas(string dataIni, string dataFim)
         {
-            DataSet ds = new DataSet();
+            List<string> datas = new List<string>();
+            List<string> vendas = new List<string>();
+            List<string> quantidades= new List<string>();
+            
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            System.Data.IDataAdapter objDataAdapter;
+            System.Data.IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT SUM(itv_preco)  as 'Valor Total', COUNT(vda.vnd_codigo) as 'Quantidade de venda' from tbl_venda vda inner join tbl_itensvenda itv on vda.vnd_codigo = itv.vnd_codigo where vnd_data between '1990-01-01' and '2000-02-20'; ", objConexao);
-            objDataAdapter = Mapped.Adapter(objCommand);
-            objDataAdapter.Fill(ds);
+            objCommand = Mapped.Command("SELECT vnd_data AS 'dia', COUNT(DISTINCT(vda.vnd_codigo)) AS 'quantidade', SUM(itv_preco)  as 'total' from tbl_venda vda inner join tbl_itensvenda itv on vda.vnd_codigo = itv.vnd_codigo where vnd_data between ?dataini and ?datafim GROUP BY vnd_data", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?dataini", dataIni));
+            objCommand.Parameters.Add(Mapped.Parameter("?datafim", dataFim));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                string teste = objDataReader["dia"].ToString() + " - "+ objDataReader["quantidade"].ToString() + " - " + objDataReader["total"].ToString();
+                datas.Add(objDataReader["dia"].ToString());
+                vendas.Add(objDataReader["quantidade"].ToString());
+                quantidades.Add(objDataReader["total"].ToString());
+            }
+            objDataReader.Close();
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
-            return ds;
+            objDataReader.Dispose();
 
+            string[][] retorno = new string[][] { datas.ToArray(), vendas.ToArray(), quantidades.ToArray() };
+            return retorno;
         }
         public VendaBD()
         {

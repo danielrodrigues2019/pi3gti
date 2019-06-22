@@ -41,12 +41,14 @@ public partial class Paginas_Venda_CadastrarVenda : System.Web.UI.Page
         if (ddlClientes.SelectedItem.Text != "Selecione")
         {
             int idCliente = Convert.ToInt32(ddlClientes.SelectedItem.Value);
+            int idVendedor = Convert.ToInt32(ddlVendedor.SelectedItem.Value);
 
 
             Venda venda = new Venda();
             venda.Pagamento = ddl.Text;
             venda.Data = Convert.ToDateTime(txtData.Text);
             venda.ClienteCodigo = Convert.ToInt32(idCliente);
+            venda.VendedorCodigo = Convert.ToInt32(idVendedor);
             VendaBD bd = new VendaBD();
             int flag = bd.Insert(venda);
 
@@ -120,10 +122,26 @@ public partial class Paginas_Venda_CadastrarVenda : System.Web.UI.Page
             ddlClientes.DataBind();
             ddlClientes.Items.Insert(0, "Selecione");
         }
+
+        ds = new VendedorBD().SelectAll();
+        qtd = ds.Tables[0].Rows.Count;
+        if (qtd > 0)
+        {
+            ddlVendedor.DataSource = ds.Tables[0].DefaultView;
+            ddlVendedor.DataTextField = "ven_nome";
+            ddlVendedor.DataValueField = "ven_codigo";
+            ddlVendedor.DataBind();
+            ddlVendedor.Items.Insert(0, "Selecione");
+        }
     }
 
 
     protected void gdvProdutos_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+    }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
