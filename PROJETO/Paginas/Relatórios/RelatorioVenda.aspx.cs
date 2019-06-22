@@ -21,7 +21,6 @@ public partial class Paginas_Relatórios_RelatorioVenda : System.Web.UI.Page
         //{
         GetData();
         //}
-
     }
     public void GetData()
     {
@@ -49,8 +48,6 @@ public partial class Paginas_Relatórios_RelatorioVenda : System.Web.UI.Page
     //    Grafico1.Series["Series"].Points.DataBindXY(Produtos, Fatias);
 
     //}
-
-
 
     protected void GerarRelatorio(object sender, EventArgs e)
     {
