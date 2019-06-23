@@ -5,7 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Newtonsoft.Json;
+
 
 
 
@@ -19,13 +20,10 @@ public partial class Paginas_Relatórios_RelatorioVenda : System.Web.UI.Page
         //string dataFim = Request.Params.Get("dataFim");
         //if (dataInicio != null && dataFim != null)
         //{
-        GetData();
         //}
     }
-    public void GetData()
-    {
-        data = new VendaBD().QuantidadeVendas("2019-01-01", "2019-12-01");
-    }
+  
+
     //protected void Carrega()
     //{
     //    VendaBD bd = new VendaBD();
@@ -49,11 +47,11 @@ public partial class Paginas_Relatórios_RelatorioVenda : System.Web.UI.Page
 
     //}
 
-    protected void GerarRelatorio(object sender, EventArgs e)
+    protected void GetData(object sender, EventArgs e)
     {
-        string dataInicio = txtDataIni.Text;
-        string dataFim = txtDataFim.Text;
-
-        Response.Redirect("RelatorioVenda.aspx?dataInicio=" + dataInicio + "&dataFim=" + dataFim);
+        data = new VendaBD().QuantidadeVendas("2019-01-01", "2019-12-01");
+        string json = JsonConvert.SerializeObject(data);
+        hdnResultado.Text = json;
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "data", "showData()", true);
     }
 }

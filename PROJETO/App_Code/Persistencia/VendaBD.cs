@@ -98,10 +98,10 @@ namespace PROJETO.Persistencia
         //relatoriovenda
         public string[][] QuantidadeVendas(string dataIni, string dataFim)
         {
-            List<string> datas = new List<string>();
-            List<string> vendas = new List<string>();
-            List<string> quantidades= new List<string>();
-            
+            List<string[]> data = new List<string[]>();
+            // data.Add(new string[]{ "Dia", "Quant", "Total" });
+
+
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
@@ -112,10 +112,7 @@ namespace PROJETO.Persistencia
             objDataReader = objCommand.ExecuteReader();
             while (objDataReader.Read())
             {
-                string teste = objDataReader["dia"].ToString() + " - "+ objDataReader["quantidade"].ToString() + " - " + objDataReader["total"].ToString();
-                datas.Add(objDataReader["dia"].ToString());
-                vendas.Add(objDataReader["quantidade"].ToString());
-                quantidades.Add(objDataReader["total"].ToString());
+                data.Add(new string[] { objDataReader["dia"].ToString(), objDataReader["quantidade"].ToString(), objDataReader["total"].ToString() });
             }
             objDataReader.Close();
             objConexao.Close();
@@ -123,9 +120,9 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             objDataReader.Dispose();
 
-            string[][] retorno = new string[][] { datas.ToArray(), vendas.ToArray(), quantidades.ToArray() };
-            return retorno;
+            return data.ToArray();
         }
+
         public VendaBD()
         {
             //

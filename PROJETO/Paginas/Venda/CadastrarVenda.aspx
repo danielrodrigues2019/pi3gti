@@ -27,15 +27,7 @@
         </asp:DropDownList>
         <br />
         <br />
-        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
-        <asp:DropDownList ID="ddl" runat="server">
-            <asp:ListItem>Selecione</asp:ListItem>
-            <asp:ListItem>Débito</asp:ListItem>
-            <asp:ListItem>Crédito</asp:ListItem>
-            <asp:ListItem>Dinheiro</asp:ListItem>
-            <asp:ListItem>Carnê</asp:ListItem>
 
-        </asp:DropDownList>
         <br />
         <%--<asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
         &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>--%>
@@ -64,7 +56,17 @@
 
 
 
+        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
+        <asp:DropDownList ID="ddl" runat="server">
+            <asp:ListItem>Selecione</asp:ListItem>
+            <asp:ListItem>Débito</asp:ListItem>
+            <asp:ListItem>Crédito</asp:ListItem>
+            <asp:ListItem>Dinheiro</asp:ListItem>
+            <asp:ListItem>Carnê</asp:ListItem>
 
+        </asp:DropDownList>
+        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
+        <asp:TextBox ID="txtpreco" runat="server" TextMode="Number"></asp:TextBox>
 
         <p>
             <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
