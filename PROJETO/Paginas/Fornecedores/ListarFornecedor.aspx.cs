@@ -13,8 +13,7 @@ public partial class Paginas_Fornecedores_ListarFornecedor : System.Web.UI.Page
 
     private void Carrega()
     {
-        FornecedorBD bd = new FornecedorBD();
-        DataSet ds = bd.SelectAll1();
+        DataSet ds = new FornecedorBD().SelectAll();
         GridView1.DataSource = ds.Tables[0].DefaultView;
         GridView1.DataBind();
     }

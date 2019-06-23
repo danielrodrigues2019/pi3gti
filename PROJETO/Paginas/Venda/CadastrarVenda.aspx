@@ -20,24 +20,17 @@
         <asp:Label ID="lblVendedor" runat="server" Text="Vendedor"></asp:Label>
         <asp:DropDownList ID="ddlVendedor" runat="server" data-live-search="true">
         </asp:DropDownList>
-        <br />
-        <br />
+
         <asp:Label ID="lblCliente" runat="server" Text="Cliente"></asp:Label>
         &nbsp;<asp:DropDownList ID="ddlClientes" CssClass="" data-live-search="true" runat="server">
         </asp:DropDownList>
         <br />
-        <br />
-
-        <br />
-        <%--<asp:Label ID="pagamento" runat="server" Text="Pagamento"></asp:Label>
-        &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>--%>
-        <br />
+       
         <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
         &nbsp;<asp:TextBox ID="txtData" CssClass="" TextMode="Date" runat="server"></asp:TextBox>
         <br />
-        <br />
-
-        <asp:GridView ID="gdvProdutos" CssClass="table table-hover tabelaCompleta" runat="server" OnRowDataBound="gdvProdutos_RowDataBound" AutoGenerateColumns="false">
+     
+        <asp:GridView ID="gdvProdutos" CssClass="table table-hover tabelaCompleta" runat="server" AutoGenerateColumns="false" >
             <Columns>
                 <asp:BoundField HeaderText="Codigo" DataField="pro_codigo" />
                 <asp:BoundField HeaderText="Produto" DataField="pro_nome" />
@@ -48,29 +41,37 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Preço de Compra">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtpreco" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:TextBox ID="txtpreco" runat="server" TextMode="Number" ></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-
-
-
-        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
-        <asp:DropDownList ID="ddl" runat="server">
+        
+        <asp:Label ID="lblPagamento" runat="server" Text="Pagamento"></asp:Label>
+        <asp:DropDownList ID="ddlPagamento" runat="server">
             <asp:ListItem>Selecione</asp:ListItem>
             <asp:ListItem>Débito</asp:ListItem>
             <asp:ListItem>Crédito</asp:ListItem>
             <asp:ListItem>Dinheiro</asp:ListItem>
-            <asp:ListItem>Carnê</asp:ListItem>
-
+            <asp:ListItem>Parcelado</asp:ListItem>
         </asp:DropDownList>
-        <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
-        <asp:TextBox ID="txtpreco" runat="server" TextMode="Number"></asp:TextBox>
+                
+        <asp:Label ID="lblTotal" runat="server" Text="Total"></asp:Label>
+        <asp:TextBox ID="txtTotal" runat="server" TextMode="Number"></asp:TextBox>
 
-        <p>
-            <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
-        </p>
+        <asp:Label ID="lblEntrada" runat="server" Text="Entrada"></asp:Label>
+        <asp:TextBox ID="txtEntrada" runat="server" TextMode="Number" ></asp:TextBox>
+
+        <asp:Label ID="lblNumparcelas" runat="server" Text="Numero de Parcelas"></asp:Label>
+        <asp:TextBox ID="txtNumparcelas" runat="server" TextMode="Number" ></asp:TextBox>
+        
+        <asp:Label ID="lblValor" runat="server" Text="Valor Parcela"></asp:Label>
+        <asp:TextBox ID="txtValor" runat="server" TextMode="Number" ></asp:TextBox>
+
+        <asp:Button ID="CalcularTotal" CssClass="btn btn-primary" runat="server" Text="Calcular Total" OnClick="CalcularTotal_Click" />
+
+        <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Finalizar Venda" OnClick="btnSalvar_Click" />
+        
         <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
 
     </form>

@@ -5,23 +5,24 @@ using PROJETO.Classes;
 using System.Data;
 
 /// <summary>
-/// Summary description for CarneBD
+/// Summary description for ParcelaBD
 /// </summary>
-public class CarneBD
+public class ParcelaBD
 {
-    public bool Insert(Carne carne)
+    public bool Insert(Parcela parcela)
     {
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
-        string sql = "INSERT INTO tbl_parcelavenda(par_codigo, cli_codigo, par_data, par_valor, par_status, par_nparcelas) VALUES (?codigo, ?clicodigo, ?data, ?valor, ?status, ?nparcelas)";
+        string sql = "INSERT INTO tbl_parcelavenda(par_codigo, cli_codigo, ven_codigo, par_datavencimento, par_valor, par_status, par_datapagamento VALUES (?codigo, ?clicodigo, ?vencodigo, ?datavencimento, ?valor, ?status, ?datapagamento)";
         objConexao = Mapped.Connection();
         objCommand = Mapped.Command(sql, objConexao);
-        objCommand.Parameters.Add(Mapped.Parameter("?codigo", carne.Codigo));
-        objCommand.Parameters.Add(Mapped.Parameter("?clicodigo", carne.Clicodigo));
-        objCommand.Parameters.Add(Mapped.Parameter("?data", carne.DataParcela));
-        objCommand.Parameters.Add(Mapped.Parameter("?valor", carne.Valor));
-        objCommand.Parameters.Add(Mapped.Parameter("?status", carne.Status));
-        objCommand.Parameters.Add(Mapped.Parameter("?nparcelas", carne.NumeroParcelas));
+        objCommand.Parameters.Add(Mapped.Parameter("?codigo", parcela.Codigo));
+        objCommand.Parameters.Add(Mapped.Parameter("?clicodigo", parcela.Clicodigo));
+        objCommand.Parameters.Add(Mapped.Parameter("?vencodigo", parcela.Vencodigo));
+        objCommand.Parameters.Add(Mapped.Parameter("?datavencimento", parcela.DataPagamento));
+        objCommand.Parameters.Add(Mapped.Parameter("?valor", parcela.Valor));
+        objCommand.Parameters.Add(Mapped.Parameter("?status", parcela.Status));
+        objCommand.Parameters.Add(Mapped.Parameter("?datapagamento", parcela.DataVencimento));
         objCommand.ExecuteNonQuery();
         objConexao.Close();
         objCommand.Dispose();
@@ -59,9 +60,9 @@ public class CarneBD
         objCommand.Dispose();
         objConexao.Dispose();
         return ds;
-    }    // select    public Carne Select(Carne carne)
+    }    // select    public Parcela Select(Parcela parcela)
     {
-        Carne obj = null;
+        Parcela obj = null;
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
@@ -70,13 +71,14 @@ public class CarneBD
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
-            obj = new Carne();
-            objCommand.Parameters.Add(Mapped.Parameter("?codigo", carne.Codigo));
-            objCommand.Parameters.Add(Mapped.Parameter("?clicodigo", carne.Clicodigo));
-            objCommand.Parameters.Add(Mapped.Parameter("?data", carne.DataParcela));
-            objCommand.Parameters.Add(Mapped.Parameter("?valor", carne.Valor));
-            objCommand.Parameters.Add(Mapped.Parameter("?status", carne.Status));
-            objCommand.Parameters.Add(Mapped.Parameter("?nparcelas", carne.NumeroParcelas));
+            obj = new Parcela();
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", parcela.Codigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?clicodigo", parcela.Clicodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?vencodigo", parcela.Vencodigo));
+            objCommand.Parameters.Add(Mapped.Parameter("?datavencimento", parcela.DataPagamento));
+            objCommand.Parameters.Add(Mapped.Parameter("?valor", parcela.Valor));
+            objCommand.Parameters.Add(Mapped.Parameter("?status", parcela.Status));
+            objCommand.Parameters.Add(Mapped.Parameter("?datapagamento", parcela.DataVencimento));
         }
         objDataReader.Close();
         objConexao.Close();
@@ -85,7 +87,7 @@ public class CarneBD
         objDataReader.Dispose();
         return obj;
     }
-    public CarneBD()
+    public ParcelaBD()
     {
         //
         // TODO: Add constructor logic here

@@ -3,6 +3,7 @@ using System;
 using System.Web;
 using PROJETO.Classes;
 using System.Data;
+using System.Collections.Generic;
 
 namespace PROJETO.Persistencia
 {
@@ -128,6 +129,32 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return true;
         }
+        //relatoriocliente
+        public string[][] QuantidadeClientes(string dataIni, string dataFim)
+        {
+            List<string[]> data = new List<string[]>();
+            
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataReader objDataReader;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT cli_datacadastro AS dia, COUNT(cli_codigo) AS 'total' FROM tbl_cliente WHERE cli_datacadastro BETWEEN ?dataini and ?datafim GROUP BY cli_datacadastro", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?dataini", dataIni));
+            objCommand.Parameters.Add(Mapped.Parameter("?datafim", dataFim));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                data.Add(new string[] { objDataReader["dia"].ToString(), objDataReader["total"].ToString() });
+            }
+            objDataReader.Close();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            objDataReader.Dispose();
+
+            return data.ToArray();
+        }
+
         //construtor
         public ClienteBD()
         {

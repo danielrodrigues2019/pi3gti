@@ -106,13 +106,13 @@ namespace PROJETO.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT vnd_data AS 'dia', COUNT(DISTINCT(vda.vnd_codigo)) AS 'quantidade', SUM(itv_preco)  as 'total' from tbl_venda vda inner join tbl_itensvenda itv on vda.vnd_codigo = itv.vnd_codigo where vnd_data between ?dataini and ?datafim GROUP BY vnd_data", objConexao);
+            objCommand = Mapped.Command("SELECT vnd_data AS 'dia', SUM(itv_preco)  as 'total' from tbl_venda vda inner join tbl_itensvenda itv on vda.vnd_codigo = itv.vnd_codigo where vnd_data between ?dataini and ?datafim GROUP BY vnd_data", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?dataini", dataIni));
             objCommand.Parameters.Add(Mapped.Parameter("?datafim", dataFim));
             objDataReader = objCommand.ExecuteReader();
             while (objDataReader.Read())
             {
-                data.Add(new string[] { objDataReader["dia"].ToString(), objDataReader["quantidade"].ToString(), objDataReader["total"].ToString() });
+                data.Add(new string[] { objDataReader["dia"].ToString(), objDataReader["total"].ToString() });
             }
             objDataReader.Close();
             objConexao.Close();

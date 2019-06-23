@@ -11,10 +11,10 @@
         function showData() {
             valuesResult = JSON.parse($("#hdnResultado").val());
             gValues = [];
-            gValues[0] = ["Dia", "Quant", "Total"];
+            gValues[0] = ["Dia", "Total"];
             console.log(valuesResult, valuesResult.length);
             for (i = 0; i < valuesResult.length; i++) {
-                gValues[i+1] = [valuesResult[i][0], parseInt(valuesResult[i][1]), parseInt(valuesResult[i][2])];
+                gValues[i+1] = [valuesResult[i][0], parseInt(valuesResult[i][1])];
             }
 
             console.log(gValues);
@@ -41,6 +41,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblType" runat="server" Text="Tipo de relatorio"></asp:Label>
+            <asp:DropDownList ID="ddlTipo" runat="server">
+            <asp:ListItem>Selecione</asp:ListItem>
+            <asp:ListItem>Venda</asp:ListItem>
+            <asp:ListItem>Cliente</asp:ListItem>
+            </asp:DropDownList>
             <br />
             <br />
             <asp:Label ID="lblDataIni" runat="server" Text="Data Inicial">

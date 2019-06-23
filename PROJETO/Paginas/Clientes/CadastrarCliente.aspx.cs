@@ -27,6 +27,7 @@ public partial class Paginas_Cadastrar : System.Web.UI.Page
         cliente.Endereco = txtEndereco.Text;
         cliente.CPF = txtCpf.Text;
         cliente.Telefone = txtTelefone.Text;
+        cliente.Datacadastro = Convert.ToDateTime(txtDatacadastro.Text);
         ClienteBD bd = new ClienteBD();
         if (bd.Insert(cliente))
         {
@@ -36,6 +37,7 @@ public partial class Paginas_Cadastrar : System.Web.UI.Page
             txtEndereco.Text = "";
             txtCpf.Text = "";
             txtTelefone.Text = "";
+            txtDatacadastro.Text = "";
         }
         else
         {

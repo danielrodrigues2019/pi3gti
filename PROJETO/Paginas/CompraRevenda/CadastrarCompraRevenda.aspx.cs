@@ -98,7 +98,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
 
     private void CarregarGrid()
     {
-        DataSet ds = ProdutoBD.SelectAll();
+        DataSet ds = new ProdutoBD().SelectAll();
         int qtd = ds.Tables[0].Rows.Count;
         if (qtd > 0)
         {
@@ -110,7 +110,7 @@ public partial class Paginas_CompraRevenda_CadastrarCompraRevenda : System.Web.U
 
     void CarregarDrop()
     {
-        DataSet ds = FornecedorBD.SelectAll();
+        DataSet ds = new FornecedorBD().SelectAll();
         int qtd = ds.Tables[0].Rows.Count;
         if (qtd > 0)
         {
