@@ -1,34 +1,28 @@
-﻿using PROJETO.Persistencia;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using Newtonsoft.Json;
+using PROJETO.Persistencia;
 
 
-
-
-public partial class Paginas_Relatórios_RelatorioVenda : System.Web.UI.Page
+public partial class Paginas_Relatorios_RelatorioCliente : System.Web.UI.Page
 {
     public string[][] data { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-    }
 
+    }
     protected void GetData(object sender, EventArgs e)
     {
-        if (ddlTipo.Text == "Venda")
+        if (ddlTipo.Text == "Cliente")
         {
-            data = new VendaBD().QuantidadeVendas(txtDataIni.Text, txtDataFim.Text);
+            data = new ClienteBD().QuantidadeClientes(txtDataIni.Text, txtDataFim.Text);
         }
-        //else
-        //{
-        //    data = new ClienteBD().QuantidadeClientes(txtDataIni.Text, txtDataFim.Text);
-        //}
+                
         string json = JsonConvert.SerializeObject(data);
         hdnResultado.Text = json;
         Page.ClientScript.RegisterStartupScript(this.GetType(), "data", "showData()", true);

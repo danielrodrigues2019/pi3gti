@@ -126,21 +126,6 @@ public partial class Paginas_Venda_CadastrarVenda : System.Web.UI.Page
                         parcela.DataPagamento = today;
                         parcelaBD.Insert(parcela);
                     }
-                    //Parcela parcela = new Parcela();
-                    //parcela.Valor = Convert.ToDouble(txtValor.Text);
-                    //parcela.Clicodigo = Convert.ToInt32(idCliente);
-                    //parcela.Vencodigo = flag;
-
-                    //ParcelaBD parcelaBD = new ParcelaBD();
-                    //DateTime today = DateTime.Today;
-                    //int i = 0;
-                    //for (i = 1; i <= Convert.ToInt32(txtNumparcelas.Text); i++)
-                    //{
-                    //    parcela.DataPagamento = today.AddMonths(1);
-                    //    parcelaBD.Insert(parcela); //Creio que não seja aqui, mas não sei o que tem dentro de ParcelaBD
-                    //}
-
-
                 }
 
 

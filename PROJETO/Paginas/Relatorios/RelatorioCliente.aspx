@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RelatorioVenda.aspx.cs" Inherits="Paginas_Relatórios_RelatorioVenda" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RelatorioCliente.aspx.cs" Inherits="Paginas_Relatorios_RelatorioCliente" %>
 
 <!DOCTYPE html>
 
@@ -34,7 +34,6 @@
                 chart.draw(data, options);
             }
         }
-
     </script>
 </head>
 
@@ -44,7 +43,7 @@
             <asp:Label ID="lblTipo" runat="server" Text="Tipo de relatorio"></asp:Label>
             <asp:DropDownList ID="ddlTipo" runat="server">
                 <asp:ListItem>Selecione</asp:ListItem>
-                <asp:ListItem>Venda</asp:ListItem>
+                <asp:ListItem>Cliente</asp:ListItem>
             </asp:DropDownList>
             <br />
             <br />
