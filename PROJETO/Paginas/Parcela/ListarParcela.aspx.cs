@@ -20,24 +20,24 @@ public partial class Paginas_Parcela_ListarParcela : System.Web.UI.Page
     {
         Carrega();
     }
-    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        int codigo = 0;
-        switch (e.CommandName)
-        {
-            case "Alterar":
-                codigo = Convert.ToInt32(e.CommandArgument);
-                Session["ID"] = codigo;
-                Response.Redirect("AlterarParcela.aspx");
-                break;
-            case "Deletar":
-                codigo = Convert.ToInt32(e.CommandArgument);
-                ParcelaBD bd = new ParcelaBD();
-                bd.Delete(codigo);
-                Carrega();
-                break;
-            default:
-                break;
-        }
-    }
+    //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    //{
+    //    int codigo = 0;
+    //    switch (e.CommandName)
+    //    {
+    //        case "Alterar":
+    //            codigo = Convert.ToInt32(e.CommandArgument);
+    //            Session["ID"] = codigo;
+    //            Response.Redirect("AlterarParcela.aspx");
+    //            break;
+    //        case "Deletar":
+    //            codigo = Convert.ToInt32(e.CommandArgument);
+    //            ParcelaBD bd = new ParcelaBD();
+    //            bd.Delete(codigo);
+    //            Carrega();
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 }

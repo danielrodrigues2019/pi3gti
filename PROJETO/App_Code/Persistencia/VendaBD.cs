@@ -122,6 +122,31 @@ namespace PROJETO.Persistencia
 
             return data.ToArray();
         }
+        //relatoriovenda
+        public string[][] VendasRealizadas(string dataIni, string dataFim)
+        {
+            List<string[]> data = new List<string[]>();
+            
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataReader objDataReader;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT COUNT(vnd_codigo) as 'vendasrealizadas' FROM tbl_venda WHERE vnd_data BETWEEN ?dataini and ?datafim GROUP BY vnd_data", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?dataini", dataIni));
+            objCommand.Parameters.Add(Mapped.Parameter("?datafim", dataFim));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                data.Add(new string[] { objDataReader["dia"].ToString(), objDataReader["vendasrealizadas"].ToString() });
+            }
+            objDataReader.Close();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            objDataReader.Dispose();
+
+            return data.ToArray();
+        }
 
         public VendaBD()
         {

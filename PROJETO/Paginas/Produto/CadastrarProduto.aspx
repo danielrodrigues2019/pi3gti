@@ -20,6 +20,7 @@
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
             <br />
             <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+            <a href="ListarProduto.aspx">ListarProduto.aspx</a>
         </div>
     </form>
 </body>

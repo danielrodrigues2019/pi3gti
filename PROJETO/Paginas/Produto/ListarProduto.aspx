@@ -17,17 +17,17 @@
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar"                            CommandArgument='<%# Bind("pro_codigo")%>'>Alterar</asp:LinkButton>
+                            <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar" CommandArgument='<%# Bind("pro_codigo")%>'>Alterar</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar"
-                                CommandArgument='<%# Bind("pro_codigo")%>'>Excluir</asp:LinkButton>
+                            <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar" CommandArgument='<%# Bind("pro_codigo")%>'>Excluir</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <a href="ListarProduto.aspx">ListarProduto.aspx</a>
         </div>
     </form>
 </body>

@@ -25,6 +25,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+            <a href="CadastrarVendedor.aspx">CadastrarVendedor.aspx</a>
         </div>
     </form>
 </body>

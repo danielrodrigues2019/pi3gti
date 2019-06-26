@@ -30,6 +30,7 @@
             <br />
             <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
         </div>
+        <a href="ListarFornecedor.aspx">ListarFornecedor.aspx</a>
     </form>
 </body>
 </html>

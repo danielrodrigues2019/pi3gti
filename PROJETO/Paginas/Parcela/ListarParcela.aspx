@@ -8,18 +8,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" OnRowCommand="GridView1_RowCommand">
+        <asp:GridView ID="GridView1" runat="server">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar"
-                            CommandArgument='<%# Bind("par_codigo")%>'>Alterar</asp:LinkButton>
+                        <asp:LinkButton ID="lbAlterar" runat="server" CommandName="Alterar" CommandArgument='<%# Bind("par_codigo")%>'>Alterar</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar"
-                            CommandArgument='<%# Bind("par_codigo")%>'>Excluir</asp:LinkButton>
+                        <asp:LinkButton ID="lbDeletar" runat="server" CommandName="Deletar" CommandArgument='<%# Bind("par_codigo")%>'>Excluir</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
