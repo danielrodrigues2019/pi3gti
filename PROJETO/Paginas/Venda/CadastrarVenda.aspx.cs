@@ -119,7 +119,8 @@ public partial class Paginas_Venda_CadastrarVenda : System.Web.UI.Page
                     parcela.Vencodigo = flag;
 
                     ParcelaBD parcelaBD = new ParcelaBD();
-                    DateTime today = new DateTime(2019, 6, 23);
+                    DateTime today = DateTime.Now;
+                    DateTime proximoMes = today.AddMonths(1);
                     for (int i = 1; i <= Convert.ToInt16(txtNumparcelas.Text); i++)
                     {
                         today.AddMonths(1);
