@@ -131,7 +131,7 @@ namespace PROJETO.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT COUNT(vnd_codigo) as 'vendasrealizadas' FROM tbl_venda WHERE vnd_data BETWEEN ?dataini and ?datafim GROUP BY vnd_data", objConexao);
+            objCommand = Mapped.Command("SELECT COUNT(vnd_codigo) as 'vendasrealizadas', vnd_data AS 'dia' FROM tbl_venda WHERE vnd_data BETWEEN ?dataini and ?datafim GROUP BY vnd_data", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?dataini", dataIni));
             objCommand.Parameters.Add(Mapped.Parameter("?datafim", dataFim));
             objDataReader = objCommand.ExecuteReader();

@@ -16,6 +16,7 @@ namespace PROJETO.Classes
         public int ClienteCodigo { get; set; }
         public int VendedorCodigo { get; set; }
         public DateTime Data { get; set; }
+        
         //construtor
         public Venda()
         {

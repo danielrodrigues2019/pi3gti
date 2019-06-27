@@ -20,7 +20,7 @@ public partial class Paginas_Relatorios_RelatorioQuantidadeVenda : System.Web.UI
 
     protected void GetData(object sender, EventArgs e)
     {
-        if (ddlTipo.Text == "totalvenda")
+        if (ddlTipo.Text == "vendasrealizadas")
         {
             data = new VendaBD().VendasRealizadas(txtDataIni.Text, txtDataFim.Text);
         }
