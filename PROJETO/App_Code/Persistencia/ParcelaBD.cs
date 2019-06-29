@@ -16,7 +16,7 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_parcelavenda(par_codigo, cli_codigo, ven_codigo, par_datavencimento, par_valor, par_status, par_datapagamento VALUES (?codigo, ?clicodigo, ?vencodigo, ?datavencimento, ?valor, ?status, ?datapagamento)";
+            string sql = "INSERT INTO tbl_parcelavenda(par_codigo, cli_codigo, ven_codigo, par_datavencimento, par_valor, par_status, par_datapagamento, vnd_codigo) VALUES (?codigo, ?clicodigo, ?vencodigo, ?datavencimento, ?valor, ?status, ?datapagamento, ?vndcodigo)";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", parcela.Codigo));
@@ -26,6 +26,7 @@ namespace PROJETO.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?valor", parcela.Valor));
             objCommand.Parameters.Add(Mapped.Parameter("?status", parcela.Status));
             objCommand.Parameters.Add(Mapped.Parameter("?datapagamento", parcela.DataVencimento));
+            objCommand.Parameters.Add(Mapped.Parameter("?vndcodigo", parcela.CodigoVenda));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();

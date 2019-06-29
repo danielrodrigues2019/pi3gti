@@ -15,6 +15,7 @@ public class Parcela
     public Double Valor{ get; set; }
     public int Status { get; set; }
     public DateTime DataVencimento { get; set; }
+    public int CodigoVenda { get; set; }
 
 
 
