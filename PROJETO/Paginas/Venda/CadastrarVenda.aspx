@@ -18,7 +18,7 @@
         <div>
         </div>
         <asp:Label ID="lblVendedor" runat="server" Text="Vendedor"></asp:Label>
-        <asp:DropDownList ID="ddlVendedor" runat="server" data-live-search="true">
+        <asp:DropDownList ID="ddlVendedor" runat="server" data-live-search="true" OnSelectedIndexChanged="ddlVendedor_SelectedIndexChanged">
         </asp:DropDownList>
 
         <asp:Label ID="lblCliente" runat="server" Text="Cliente"></asp:Label>

@@ -3,6 +3,8 @@ using System;
 using System.Web;
 using PROJETO.Classes; //para acesso a classe Produto
 using System.Data; //para uso de DataSet
+using System.Collections.Generic;
+
 namespace PROJETO.Persistencia
 {
     /// <summary>
@@ -45,6 +47,24 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return true;
         }
+
+        public DataSet Select4(int idProduto)
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("select p.pro_nome as Produto, p.pro_precovenda as Venda, i.itc_precocusto as Custo, p.pro_precovenda - i.itc_precocusto as Lucro, (p.pro_precovenda - i.itc_precocusto)/p.pro_precovenda*100 as Procentagem from tbl_produto p inner join tbl_itenscompra i on p.pro_codigo = i.pro_codigo where p.pro_codigo  like ?idProduto group by p.pro_nome;", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?idProduto", idProduto));
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+        }
+
         //selectall
         public DataSet SelectAll()
         {
@@ -61,7 +81,7 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-
+        //selectall1
         public DataSet SelectAll1()
         {
             DataSet ds = new DataSet();
@@ -77,8 +97,24 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return ds;
         }
-        //selectall1
 
+        //selectall2
+        public DataSet SelectAll2()
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM tbl_produto", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+        }
+        
 
         //select
         public Produto Select(int id)
@@ -140,6 +176,7 @@ namespace PROJETO.Persistencia
             objConexao.Dispose();
             return true;
         }
+       
         //construtor
         public ProdutoBD()
         {
