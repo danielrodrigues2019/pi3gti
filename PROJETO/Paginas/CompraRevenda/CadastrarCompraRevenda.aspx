@@ -4,26 +4,45 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cadastrar Compra</title>
+    <style type="text/css">
+        body {
+            background-image: url(../../Imagens/backgroud.jpg)
+        }
+        
+        #GridView1 {
+            background-color: #ffffff;
+        }
+        #cabecalho{
+            height: 30px;
+            background-color:#b5b2b2;
+        }
+       
+    </style>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../../js/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="../../js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="../../js/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
     <%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">--%>
 </head>
-<body style="padding: 30px">
+<body >
+    <div id="cabecalho">
+        <a href="ListarCompraRevenda.aspx">Voltar</a>
+    </div>
 
     <form id="form1" runat="server">
         <div>
         </div>
         <asp:Label ID="Label1" runat="server" Text="Fornecedor"></asp:Label>
-        &nbsp;<asp:DropDownList ID="ddlFornecedores" CssClass="" data-live-search="true" runat="server">
+        &nbsp;&nbsp;&nbsp; <asp:DropDownList ID="ddlFornecedores" CssClass="" data-live-search="true" runat="server">
         </asp:DropDownList>
         <br />
         <br />
-        <br />
         <asp:Label ID="ddlpagamento" runat="server" Text="Pagamento"></asp:Label>
+        &nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="ddl" runat="server">
             <asp:ListItem>Selecione</asp:ListItem>
             <asp:ListItem>Débito</asp:ListItem>
@@ -37,6 +56,7 @@
         &nbsp;<asp:TextBox ID="txtPagamento" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>--%>
         <br />
         <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;<asp:TextBox ID="txtData" CssClass="" TextMode="Date" runat="server"></asp:TextBox>
         <br />
         <br />
@@ -62,6 +82,8 @@
 
 
 
+        <p>
+            &nbsp;</p>
         <p>
             <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
         </p>

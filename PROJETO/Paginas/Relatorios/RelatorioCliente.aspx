@@ -4,7 +4,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
+    <title>Adesão Clientes</title>
+    <style type="text/css">
+        body {
+            background-image: url(../../Imagens/backgroud.jpg)
+        }
+        
+        #GridView1 {
+            background-color: #ffffff;
+        }
+        #cabecalho{
+            height: 30px;
+            background-color:#b5b2b2;
+        }
+       
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -56,6 +73,7 @@
             <br />
             <br />
             <asp:Button ID="btnGerar" runat="server" Text="Gerar Relatorio" OnClick="GetData" />
+            <br />
             <br />
 
 

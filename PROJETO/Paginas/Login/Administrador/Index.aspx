@@ -5,7 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
+    <title>Login</title>
 </head>
 <script src="../../../Scripts/popper.min.js"></script>
 <script src="../../../Scripts/jquery-3.0.0.min.js"></script>

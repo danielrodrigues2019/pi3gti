@@ -4,9 +4,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
+    <title>Listar Cliente</title>
+    <style type="text/css">
+        body {
+            background-image: url(../../Imagens/backgroud.jpg)
+        }
+        
+        #GridView1 {
+            background-color: #ffffff;
+        }
+         #cabecalho{
+            height: 30px;
+            background-color:#b5b2b2;
+        }
+       
+    </style>
 </head>
 <body>
+    <div id="cabecalho">
+    <a href="../Inicio/Inicio.aspx">Voltar</a>&nbsp;
+    <a href="CadastrarCliente.aspx">Cadastrar Cliente</a>
+    </div>
     <form id="form1" runat="server">
         <asp:GridView ID="GridView1" runat="server" OnRowCommand="GridView1_RowCommand">
             <Columns>
@@ -25,7 +46,5 @@
             </Columns>
         </asp:GridView>
     </form>
-    <a href="AlterarCliente.aspx">AlterarCliente</a>
-    <a href="CadastrarCliente.aspx">CadastrarCliente</a>
 </body>
 </html>

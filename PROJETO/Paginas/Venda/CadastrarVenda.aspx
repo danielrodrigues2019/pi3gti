@@ -4,7 +4,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cadastar Venda</title>
+    <style type="text/css">
+        body {
+            background-image: url(../../Imagens/backgroud.jpg)
+        }
+        
+        #GridView1 {
+            background-color: #ffffff;
+        }
+        #cabecalho{
+            height: 30px;
+            background-color:#b5b2b2;
+        }
+       
+    </style>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../../js/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="../../js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.min.css" rel="stylesheet" />
@@ -12,22 +28,33 @@
     <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
     <%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">--%>
 </head>
-<body style="padding: 30px">
+<body >
+    <div id="cabecalho">
+        <a href="ListarVendas.aspx">Voltar</a>
+    </div>
 
     <form id="form1" runat="server">
         <div>
         </div>
+        <strong>
+        <asp:Label ID="Label" runat="server" Text="Cadastrar Venda"></asp:Label>
+        </strong>
+        <br />
+        <br />
         <asp:Label ID="lblVendedor" runat="server" Text="Vendedor"></asp:Label>
+        &nbsp;
         <asp:DropDownList ID="ddlVendedor" runat="server" data-live-search="true" OnSelectedIndexChanged="ddlVendedor_SelectedIndexChanged">
         </asp:DropDownList>
 
+        <br />
+
         <asp:Label ID="lblCliente" runat="server" Text="Cliente"></asp:Label>
-        &nbsp;<asp:DropDownList ID="ddlClientes" CssClass="" data-live-search="true" runat="server">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="ddlClientes" CssClass="" data-live-search="true" runat="server">
         </asp:DropDownList>
         <br />
        
         <asp:Label ID="data" runat="server" Text="Data"></asp:Label>
-        &nbsp;<asp:TextBox ID="txtData" CssClass="" TextMode="Date" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtData" CssClass="" TextMode="Date" runat="server"></asp:TextBox>
         <br />
      
         <asp:GridView ID="gdvProdutos" CssClass="table table-hover tabelaCompleta" runat="server" AutoGenerateColumns="false" >
@@ -56,13 +83,13 @@
             <asp:ListItem>Parcelado</asp:ListItem>
         </asp:DropDownList>
                 
-        <asp:Label ID="lblTotal" runat="server" Text="Total"></asp:Label>
-        <asp:TextBox ID="txtTotal" runat="server" TextMode="Number"></asp:TextBox>
+        &nbsp;<asp:Label ID="lblTotal" runat="server" Text="Total"></asp:Label>
+        &nbsp;<asp:TextBox ID="txtTotal" runat="server" TextMode="Number"></asp:TextBox>
 
-        <asp:Label ID="lblEntrada" runat="server" Text="Entrada"></asp:Label>
-        <asp:TextBox ID="txtEntrada" runat="server" TextMode="Number" ></asp:TextBox>
+        &nbsp;<asp:Label ID="lblEntrada" runat="server" Text="Entrada"></asp:Label>
+        &nbsp;<asp:TextBox ID="txtEntrada" runat="server" TextMode="Number" ></asp:TextBox>
 
-        <asp:Label ID="lblNumparcelas" runat="server" Text="Numero de Parcelas"></asp:Label>
+        &nbsp;<asp:Label ID="lblNumparcelas" runat="server" Text="Numero de Parcelas"></asp:Label>
         <asp:TextBox ID="txtNumparcelas" runat="server" TextMode="Number" ></asp:TextBox>
         
         <asp:Label ID="lblValor" runat="server" Text="Valor Parcela"></asp:Label>
