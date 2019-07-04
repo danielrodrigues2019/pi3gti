@@ -19,13 +19,14 @@ namespace PROJETO.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO tbl_encomenda(enc_produto, enc_datapedido, enc_valor, enc_cliente) VALUES (?produto, ?datapedido, ?valor, ?cliente)";
+            string sql = "INSERT INTO tbl_encomenda(enc_produto, enc_datapedido, enc_valor, cli_codigo, enc_datachegada) VALUES (?produto, ?datapedido, ?valor, ?cliente, ?datachegada)";
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?produto", encomenda.Produto));
             objCommand.Parameters.Add(Mapped.Parameter("?datapedido", encomenda.DataPedido));            
             objCommand.Parameters.Add(Mapped.Parameter("?valor", encomenda.Valor));
-            objCommand.Parameters.Add(Mapped.Parameter("?cliente", encomenda.Cliente));           
+            objCommand.Parameters.Add(Mapped.Parameter("?cliente", encomenda.Cliente));
+            objCommand.Parameters.Add(Mapped.Parameter("?datachegada", encomenda.DataChegada));
             objCommand.ExecuteNonQuery();
             objConexao.Close();
             objCommand.Dispose();

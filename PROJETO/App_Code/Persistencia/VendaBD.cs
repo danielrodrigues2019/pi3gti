@@ -147,6 +147,21 @@ namespace PROJETO.Persistencia
 
             return data.ToArray();
         }
+        public DataSet Lucrodomes()
+        {
+            DataSet ds = new DataSet();
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("select sum(itv.itv_preco) as  Vendas, sum(des.des_valor) as Despesas, sum(com.parc_valor) as ContasPagar, sum(ven.par_valor) as ContasReceber,(sum(itv.itv_preco) + sum(ven.par_valor)) - (sum(des.des_valor) + sum(com.parc_valor)) as Lucro, (sum(itv.itv_preco) + sum(ven.par_valor)) - (sum(des.des_valor) + sum(com.parc_valor)) / (sum(itv.itv_preco) + sum(ven.par_valor)) * 100 as Porcentagem from tbl_itensvenda itv inner join tbl_despesa des inner join tbl_parcelacompra com inner join tbl_parcelavenda ven on com.parc_valor between '2019-06-01' and '2019-06-30' and ven.par_valor between '2019-06-01' and '2019-06-30'", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return ds;
+        }
 
         public VendaBD()
         {

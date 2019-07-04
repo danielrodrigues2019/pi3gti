@@ -12,7 +12,7 @@ public class Encomenda
     public int Codigo { get; set; }
     public string Produto { get; set; }
     public DateTime DataPedido { get; set; }
- //   public DateTime DataChegada { get; set; }
+    public DateTime DataChegada { get; set; }
     public double Valor { get; set; }
     public string Cliente { get; set; }
 

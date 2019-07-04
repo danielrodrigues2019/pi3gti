@@ -42,7 +42,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="datavencimento" runat="server" Text="Data de Vencimento"></asp:Label>
+            <asp:Label ID="datavencimento" runat="server" Text="Data de Vencimento" type="date"></asp:Label>
             &nbsp;
         <asp:TextBox ID="txtDataVencimento" runat="server"></asp:TextBox>
             <br />
